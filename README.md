@@ -6,8 +6,8 @@ Welcome to EC 339: Applied Econometrics!<br>
 
 ## Course Syllabi
 
-- [EC 339&mdash;001 Syllabus]()
-- [EC 339&mdash;002 Syllabus]()
+- [EC 339&mdash;001 Syllabus](https://raw.githack.com/marciosantetti/ec339-f22/main/syllabus/ec339-syllabus-f22.pdf)
+- [EC 339&mdash;002 Syllabus](https://raw.githack.com/marciosantetti/ec339-f22/main/syllabus/ec-339-s2-syllabus-f22.pdf)
 
 ## Lecture notes/slides
 
