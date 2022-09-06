@@ -1,0 +1,81 @@
+---
+title: "**Course**"
+subtitle: "Course Syllabus"
+author: "Marcio Santetti"
+date: "Economics Department | Term"
+format:
+  pdf: 
+    pdf-engine: pdflatex
+    documentclass: article
+    toc: false
+    number-sections: false
+    geometry:
+      - top=35mm
+      - bottom=35mm
+      - left=25mm
+      - right=25mm
+      - heightrounded
+    colorlinks: true
+    linestretch: "1.25"
+    # fontfamily: libertine
+    header-includes: |
+      \usepackage{fontawesome}
+      \usepackage[T1]{fontenc}
+      \usepackage{newpxtext,eulerpx}
+---
+
+------------------------------------------------------------------------
+
+```{r vars, include=FALSE}
+start = as.POSIXct('2022-01-24 14:15')
+midterm = as.POSIXct('2022-02-03 14:15')
+final = as.POSIXct("2021-03-16 12:30")
+pdate = function(d) paste0(format(d, '%H:%M'), ' ', 
+                           weekdays(d), ', ',
+                           format(d, '%B %d'))
+
+ge = "John Morehouse"
+ge_email = "jmorehou@uoregon.edu"
+ge_hours = "TBD"
+```
+
+
+\begin{tabular}{ll|l} 
+	\textbf{When:} & \multicolumn{2}{l}{Class day and time} \\
+	\textbf{Where:} & \multicolumn{2}{l}{Classroom (\href{https://google.com}{map})} \\
+	\textbf{Who:} & \, \faMortarBoard \,  Marcio Santetti (\textit{he/him}) & \, \faEnvelopeO \, \href{mailto:msantetti@skidmore.edu}{\texttt{msantetti@skidmore.edu}} \\
+	& \, \faHourglassHalf \, Mon 09:00--10:30$^*$ & \, \\
+\end{tabular}
+
+$^*$ _Footnote if needed._
+
+
+------------------------------------------------------------------------
+
+
+# Overview
+
+# Outcomes
+
+# Main Reeferences
+
+# Software Requirements
+
+# Prerequisites
+
+# Assignments, Exams, & Grading
+
+# Important Dates
+
+# Letter Grade Distribution
+
+# Class Policies
+
+# Tentative Course Schedule
+
+# Important Note
+
+This syllabus is meant to serve as an outline and guide for our course. Please note that I may modify it with reasonable notice to you. I may also modify the Course Schedule to accommodate the needs of our course.
+
+
+# Institutional Policies and Procedures
