@@ -12,7 +12,7 @@ Welcome to EC 339: Applied Econometrics!<br>
 ## Lecture notes/slides
 
 *Note*: Slides and assignment files created with the `xaringan` *R* package, with templates mainly inspired by [Ed Rubin](https://github.com/edrubin)'s CSS file. <br>
-Lecture notes files created using [Quarto](https://quarto.org/)
+Lecture notes files created using [Quarto](https://quarto.org/).
 
 <br>
 
