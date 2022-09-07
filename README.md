@@ -12,13 +12,18 @@ Welcome to EC 339: Applied Econometrics!<br>
 ## Lecture notes/slides
 
 *Note*: Slides and assignment files created with the `xaringan` *R* package, with templates mainly inspired by [Ed Rubin](https://github.com/edrubin)'s CSS file. <br>
-Lecture notes files created using [Quarto](https://quarto.org/).
+Handout files created using [Quarto](https://quarto.org/).
 
 <br>
 
 **Lecture 1: What is Econometrics?**
 
-  - [Slides (pdf)]()
+  - Slides: [html](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/000-stats-refresher/000-what-is-econometrics.html) | [pdf](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/000-stats-refresher/000-what-is-econometrics.pdf)
+
+**Lecture 2: Stats/Stata refresher**
+
+  - Data file: [cdc_data.csv](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/000-stats-refresher/cdc_data.csv)
+  - Stata do-file: [stats-refresher.do]()
 
 
 ## Assignments
