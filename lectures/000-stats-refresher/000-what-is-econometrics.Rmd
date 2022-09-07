@@ -356,7 +356,7 @@ data(engel)
 # Fitting a linear model
 
 
-```{r, echo=FALSE, dev='svg', fig.height=6}
+```{r, echo=FALSE, dev='svg', fig.height=5.5}
 engel %>% as_tibble() %>% 
   ggplot(aes(x = log(income), y = log(foodexp))) +
   geom_point(color = "#006661", alpha = 0.8, size = 2.3) +
@@ -373,7 +373,7 @@ engel %>% as_tibble() %>%
 # Fitting a linear model (cont.)
 
 
-```{r, echo=FALSE, dev='svg', fig.height = 6}
+```{r, echo=FALSE, dev='svg', fig.height = 5.5}
 engel %>% as_tibble() %>% 
   ggplot(aes(x = log(income), y = log(foodexp))) +
   geom_point(color = "#006661", alpha = 0.4, size = 2.3) +
