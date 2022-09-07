@@ -61,7 +61,7 @@ At the completion of the course, you will be able to:
 
 1. Use descriptive and estimation techniques to understand real economic phenomena;
 
-2. Work with `Stata` to prepare and perform econometric exercises with real and artificial data sets;
+2. Work with \textsf{R} to prepare and perform econometric exercises with real and artificial data sets;
 
 3. Collect, treat, analyze, and present economic data in an informative and concise way;
 
@@ -86,7 +86,10 @@ This course has one required textbook. Other optional references are listed belo
 
 # Software Requirements
 
-`Stata` is our software for the course. It is available in our classroom and on all public Windows computers on campus. Students at Skidmore may also use `Stata` in their personal computers. This [`link`](https://leds.domains.skidmore.edu/useful-info/computing-software/) contains all information. 
+\textsf{R} is our statistical/programming language for the course. It is available in our classroom and on all public computers on campus. Students at Skidmore may also use \textsf{R} and \textsf{R}Studio in their personal computers. 
+
+- Download $\textsf{R}$: [`https://cloud.r-project.org/`](https://cloud.r-project.org/)
+- Download $\textsf{R}$Studio: [`https://rstudio.com/products/rstudio/`](https://rstudio.com/products/rstudio/)
 
 
 
@@ -173,7 +176,7 @@ In case you test positive for COVID-19, the *priority* is for you to recover wel
 
 # Tentative Course Schedule
 
-* **Week 1**: Course introduction; Stats & `Stata` refresher.
+* **Week 1**: Course introduction; Stats & \textsf{R} refresher.
 
 * **Week 2**: Simple Linear Regression.
 
