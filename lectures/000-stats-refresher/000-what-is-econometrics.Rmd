@@ -51,7 +51,33 @@ grey_dark <- "grey20"
 purple <- "#6A5ACD"
 ```
 
-# Prologue
+
+class: middle, center, inverse
+
+.huge[.huge[.huge[.b[Hello!]]]]
+
+
+
+---
+class: middle, center, inverse
+
+
+.huge[.b[Marcio Santetti, Ph.D. (*he/him*)]]
+
+<br>
+
+<img style="border-radius: 30%;" src="jm1_cropped.png" width="150px"/>
+
+
+
+[`r fontawesome::fa("envelope")` msantetti@skidmore.edu](mailto:msantetti@skidmore.edu)
+
+---
+layout: false
+class: inverse, middle
+
+
+# Motivation
 
 ---
 
