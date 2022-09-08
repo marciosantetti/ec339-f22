@@ -1,9 +1,9 @@
 *-----------------------------------------------------------------------*
-*
-*
+*																		*
+*																		*
 *                     EC 339: APPLIED ECONOMETRICS                      *      
-*
-*  Prof. Santetti
+*																		*
+*  Prof. Santetti														*
 *-----------------------------------------------------------------------*
 
 
@@ -67,27 +67,7 @@ summarize, detail
 tabstat poverty_rate unemployment_rate, statistics(n mean median variance sd min max)
 
 
-* To filter the data by a specifi year (say, 2017):
-
-keep if (year == 2017) 
-
-* whenever you modify your data set and want to save the modified version under a 
-* different file name, use the "save" function:
-
-save cdc_data17
-
-
-* To use it,
-
-use cdc_data17
-
-
-* Now, filter more than 1 state and tabulate by state:
-
-keep if (stname == "New York" | stname == "Utah")
-
-tabstat poverty_rate unemployment_rate, by(stname) statistics(mean sd median)
-
+*---------------------------
 
 
 * If we want to create new variables, we use the "gen" function.
@@ -97,26 +77,114 @@ gen death_rate = deaths / population * 100000
 
 
 
-twoway (scatter poverty_rate unemployment_rate), by(stname, row(10))
+
+*---------------------------
+
+
+* To filter the data by a specifi year (say, 2017):
+
+
+keep if (year == 2017) 
+
+
+* whenever you modify your data set and want to save the modified version under a 
+* different file name, use the "save" function:
+
+
+save cdc_data17
+
+
+* To use it,
+
+
+use cdc_data17
+
+
+*---------------------------
+
+
+* Now, filter out more than 1 state and tabulate by state:
+
+
+keep if (stname == "New York" | stname == "Utah")
+
+
+tabstat poverty_rate unemployment_rate, by(year) statistics(mean sd median)
 
 
 
+* Bonus: summarizing by more than 1 group (not required for now):
+
+egen gp = group(year stname), label  
+
+tabstat unemployment_rate, by(gp)
 
 
 
+*---------------------------
+
+
+*--- In addition to univariate measures (mean, median, variance, SD), 
+* we can compute bivariate statistics:
 
 
 
+* Correlation:
+
+correlate unemployment_rate death_rate
+
+
+* Covariance:
+
+correlate unemployment_rate death_rate, covariance
+
+
+*---------------------------
+
+
+* Visualizing data:
+
+
+*--- Scatter plots:
+
+
+* Notice the variable ordering (first, y-, and then x-axis)
+
+twoway (scatter unemployment_rate death_rate)
+
+twoway (scatter poverty_rate death_rate)
+
+
+*--- Histogram:
+
+
+histogram death_rate
+
+
+* Adding a density curve:
+
+
+histogram death_rate, kdensity
 
 
 
+*--- Box plot:
+
+
+graph box (death_rate poverty_rate)
 
 
 
+*---------------------------
 
 
+*--- Quick challenge:
 
+* Filter out only one state from the original cdc_data data set (say, NY).
+* This way, you will have a time-series data set.
 
+* Figure out how to plot the unemployment rate, poverty rate, and death rates
+* variables over time.
 
 
 

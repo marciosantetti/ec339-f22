@@ -1,7 +1,7 @@
 
 
-#== ECON 4650-001 -- Spring 2021
-#== Marcio Santetti
+#== EC 339
+#== Prof. Santetti 
 
 #=============================================================================#
 #              QUICK STATISTICS REFRESHER / DATA WRANGLING IN R               #
@@ -11,365 +11,233 @@
 #== IMPORTANT: Before any operations, make sure to set your working directory.
 # In other words, you have to tell R in which folder you will save your work, or
 # from which folder external data sets will come from. In the lower-right pane, 
-# click on 'Files'. Select your desired folder, and click on 'More', then select 
-# the option 'Set as Working Directory'.
+# click on 'Files.' Select your desired folder, and click on 'More', then select 
+# the option 'Set as Working Directory.'
 
 #================================================================================================#
 
 
 
-#== Installing and/or loading required packages:
-
-install.packages("tidyverse")  ## installs the 'tidyverse' package. If you do not have any of the packages 
-                               ## below already installed, make sure to first install them, and then run
-                               ## the next commands.
-
-
-library(tidyverse)   # for data wrangling and plotting.
-library(rstatix)     # for Statistics tools.
-library(pwt9)        # contains data from the Penn World Tables vols. 9.0 and 9.1
-library(patchwork)   # for plotting purposes.
-
-
-# Once you have installed a package, you do not need to run the 'install.packages'
-# command again. When you need to use a function from a given package, you must
-# use the 'library()' command, so R loads the package's content to your environment.
-
-
-#================================================================================================#
 
 
 
-##=================== A little bit of data wrangling in R with the "tidyverse":
+###--- Loading the necessary packages for today:
 
+
+library(tidyverse)
+library(skimr)
+library(rstatix)
 
 
 ## The 'tidyverse' is a collection of R packages designed for data science. You can learn more
 ## about it at [https://www.tidyverse.org].
 
 
-## First, let us use data from the Penn World Tables 9.1. To do that, we use the 'pwt9' package.
-## You can check out its website at [https://www.rug.nl/ggdc/productivity/pwt/?lang=en].
+###--- Importing our data set:
 
 
-data("pwt9.1")      ## you should see something in your 'Environment' pane.
-
-
-pwt <- as_tibble(pwt9.1)  ## 'tibbles' are a very handy class of data structure to work with the 'tidyverse'.
-
-
-
-glimpse(pwt)   ## a quick look at the data. Or...
-
-View(pwt)      ## notice the upper-case "V."
-
-
-## Question: what is this data set's type? Cross-section, time-series, or panel? Panel data.
-
-
-##== We have a lot of data here. Let us select a few variables to start off our analysis.
-
-## A very useful tool when working with data is the "pipe" ( %>% ) operator. In plain English,
-## it means "and then." In other words, from the previous code, the pipe operator indicate what we
-## want to do with that. The shortcut for the pipe is Ctrl(Cmd)+Shift+M.
-
-
-pwt_select <- pwt %>% select(year, country, pop, rgdpna, hc, cn) ## 'select()' is used for columns (variables).
-
-
-## Reading the above code, it means: I want to use the 'pwt' tibble, and then select only the 'year', 'country',
-## 'pop', 'rgdpna', 'hc', and 'cn' variables. Lastly, I want to store these data in a new object, called 
-## 'pwt_select'.
-
-
-##== What if we want specific countries?
-
-
-## Countries are row variables. To select rows, we use 'filter()':
-
-pwt_select <- pwt_select %>% filter(country %in% c('United States of America',
-                                                   'Canada',
-                                                   'Mexico',
-                                                   'China',
-                                                   'United Kingdom',
-                                                   'Germany',
-                                                   'India',
-                                                   'Brazil'))   ## The %in% operator is useful when filtering
-                                                                ## rows with specific values. In our case, these
-                                                                ## values are country names. Notice that we need
-                                                                ## to use the 'c' function because we
-                                                                ## are writing out a list with more than one item.
-
-
-glimpse(pwt_select)   ## we have narrowed down our sample to 8 countries and 6 variables (544 observations).
-
-
-
-pwt_select %>% get_summary_stats()
-
-
-##=================== Visualizing data with ggplot2:
-
-
-## 'ggplot2' is the most powerful plotting R package. It is based on a specific grammar vocabulary, which
-## we start exploring next.
-
-
-pwt_select %>% ggplot(mapping = aes(x=year, y=rgdpna)) ## creating the plotting space.
-
-
-
-pwt_select %>% ggplot(mapping = aes(x=year, y=rgdpna)) + geom_line()  ## Now, adding a line.
-
-
-pwt_select %>% ggplot(mapping = aes(x=year, y=rgdpna, group=country)) + geom_line()  ## one line per country.
-
-
-pwt_select %>% ggplot(aes(x=year, y=rgdpna, group=country)) + 
-  geom_line(aes(color=country))  ## distinguishing each country by color.
-
-
-pwt_select %>% ggplot(aes(x=year, y=rgdpna, group=country)) + geom_line(aes(color=country)) +
-  facet_wrap(~country) + theme(legend.position = 'none')  ## what about one panel per country?
-
-
-
-
-
-##== Still on univariate visualization tools, let us look at box plots and histograms:
-
-
-## Box plot for the human capital per person index (based on schooling and returns to education): 
-
-
-pwt_select %>% ggplot(mapping = aes(x=hc)) + geom_boxplot() + facet_wrap(~country) + theme_bw() + 
-  labs(x='human capital')
-
-
-## Histogram:
-
-pwt_select %>% ggplot(mapping = aes(x=hc)) + geom_histogram(color='black', fill='white', bins = 20) + 
-  facet_wrap(~country) + theme_bw()
-
-
-
-##== Moving on to bivariate relationships:
-
-
-pwt_usa <- pwt_select %>% filter(country %in% 'United States of America')  ## now, let us look only at US data.
-
-## Notice that, with this filtering, we went from a panel to a time-series data set.
-
-
-
-## Scatter plot:
-
-
-pwt_usa %>% ggplot(mapping = aes(x=hc, y=rgdpna)) + geom_point()
-
-
-
-
-#================================================================================================#
-
-
-##== Now, let us import an external data set into our R environment. The 'cdc_data.csv' file 
+## The 'cdc_data.csv' file 
 ## contains data on drug overdose deaths from the CDC and poverty and unemployment rates 
 ## from the University of Kentucky Poverty Research Center.
-
 ## Thanks to Kyle Raze for making the data set available.
 
 
-## To import .csv files into R, first the file needs to be stored in the same Working Directory as the
-## R script we are working on. Then, we use the 'read_csv' function from the 'tidyverse':
+cdc_data <- read_csv("cdc_data.csv")           # Q: This data set is of what type?
 
 
-drug_data <- read_csv('cdc_data.csv')
 
-glimpse(drug_data)   ## quick look at the data...
 
+##--- The {skimr} package has a very convenient function for a general overview of a data set:
 
 
+cdc_data %>%                      # %>% is called the "pipe" operator.
+  skim()
 
-## Let us look at some statistics for these data. But, before that, we will create a new variable (column).
-## Suppose we want to analyze the death rate caused by drug overdose, instead of total counts.
-## Let us, then, create a 'death_rate' variable, expressing deaths per 100,000 people.
-## The mutate() function does that for us:
 
 
-drug_data <- drug_data %>% 
-  mutate(death_rate = deaths/population*100000)  ## this way, a new column will be added to our 'drug_data' object.
+##--- If we want to select a specific column, we use the "select()" function:
 
 
-drug_data %>% 
-  mutate(other = deaths/(population * 10000))
+cdc_data %>%                            
+  select(stname, poverty_rate)
 
 
-##====================== Now, to the statistics!
 
 
+## And we can play around with it...
 
-##== Univariate measures (with 'summarize()'):
 
-drug_data %>% summarize(min_rate = min(death_rate),
-                        max_rate = max(death_rate),
-                        avg_rate = mean(death_rate),
-                        median_rate = median(death_rate),
-                        sd_rate = sd(death_rate),
-                        var_rate = var(death_rate))  ## this will generate a tibble with the information 
-                                                     ## we have asked for.
+cdc_data %>% 
+  select(stname, poverty_rate) %>% 
+  slice(which.max(poverty_rate))                ## Which state has the greatest poverty rate of all?
 
 
-## From these statistics, which state showed the minimum death rate? Which state showed the maximum?
-##  The 'slice()' function helps us with that.
 
+##--- Some summary statistics (univariate):
 
-drug_data %>% slice(which.min(death_rate))   ## Answer?
 
-drug_data %>% slice(which.max(death_rate))   ## Answer?
+cdc_data %>% 
+  group_by(stname) %>%                                      ## it is convenient to group by state to compute some
+  summarize(mean_poverty_rate = mean(poverty_rate),         ## summary statistics.
+            median_poverty_rate = median(poverty_rate),
+            variance_poverty_rate = var(poverty_rate),
+            sd_poverty_rate = sd(poverty_rate))
 
 
+##--- Some summary statistics (bivariate):
 
 
-##== Bivariate relationship measures:
+cdc_data %>% 
+  group_by(stname) %>%                                     
+  summarize(cov_poverty_unemp = cov(poverty_rate, unemployment_rate),
+            cor_poverty_unemp = cor(poverty_rate, unemployment_rate))
 
 
-## The most common bivariate relationship measures are (i) covariance and (ii) correlation.
+##--- If we want to select by rows, we use the "filter()" function:
 
+## Suppose we just want data for the year 2017:
 
-drug_data %>% summarize(covariance = cov(death_rate, unemployment_rate),
-                        correlation = cor(death_rate, unemployment_rate))  ## Interpretation?
 
+cdc_data %>% 
+  filter(year == 2017)           # Q: Now, this data set is of what type?
 
-drug_data %>% 
-  filter(year == 2017) %>% 
-  summarize(covariance = cov(death_rate, poverty_rate),
-                        correlation = cor(death_rate, poverty_rate))
 
 
-## Plotting this relationship:
 
+## If we want to keep working with it, we can store this modified data set:
 
-drug_data %>% ggplot(mapping = aes(x=unemployment_rate, y=death_rate)) + geom_point() + theme_bw() 
 
+cdc_data17 <- cdc_data %>% 
+  filter(year %in% 2017) 
 
-## Adding labels:
 
 
-drug_data %>% ggplot(mapping = aes(x=unemployment_rate, y=death_rate)) + geom_point() + theme_bw() +
-  labs(x="Unemployment rate (%)", y="Drug overdose death rate (per 100,000)",
-       title = "A scatter plot")
 
+## And we can play around with it:
 
 
+cdc_data17 %>% 
+  summarize(mean_poverty_rate = mean(poverty_rate),         
+            median_poverty_rate = median(poverty_rate),
+            variance_poverty_rate = var(poverty_rate),
+            sd_poverty_rate = sd(poverty_rate))
 
-##== This data set is also a panel data set. Let us transform it into a cross-sectional data set by
-## specifying a unique year, say, 2017:
 
+cdc_data17 %>% 
+  summarize(cov_poverty_unemp = cov(poverty_rate, unemployment_rate),
+            cor_poverty_unemp = cor(poverty_rate, unemployment_rate))
 
-drug_data17 <- drug_data %>% filter(year %in% '2017')
 
 
-## And let us look at the relationship between death rates and the poverty rate for 2017:
+##--- If we want to create a new variable and add as a column to the data set, we use the "mutate()" function:
 
+## Suppose we want to analyze the death rate per 100,000 people. We do the following:
+  
+  
+cdc_data17 <- cdc_data17 %>% 
+  mutate(death_rate = (deaths / population) * 100000)
 
-drug_data17 %>% summarize(covariance = cov(death_rate, poverty_rate),
-                        correlation = cor(death_rate, poverty_rate))  ## Interpretation?
 
 
-## Max and min values:
 
+##--- Creating plots with {ggplot2}:
 
-drug_data17 %>% slice(which.min(death_rate))    ## Answer?
-drug_data17 %>% slice(which.min(poverty_rate))  ## Answer?
-drug_data17 %>% slice(which.max(death_rate))    ## Answer?
-drug_data17 %>% slice(which.max(poverty_rate))  ## Answer?
 
+## {ggplot2} is an awesome plotting library, that we will use a lot to visualize our data.
 
-## And plotting the data:
+## Cedric Scherer has a great blog post, where he explore all the nuts and bolts of the package:
 
+## https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/
 
-drug_data17 %>% ggplot(mapping = aes(x=poverty_rate, death_rate)) + 
-  geom_point(color='blue')   ## Do we see a clear positive/negative relationship?
+## Bookmark this page and it will be of great help moving along.
 
 
 
 
+## Getting started:
 
-##============== A quick hypothesis testing review:
 
+## We start with our data set, and start the process with the "ggplot()" function.
+## Then, within the "aes()" argument ["aes" for aesthetics], we decide our x-axis and y-axis variables:
 
-##== In ECON 3640, hypothesis testing (inference) is approached is approached in two ways:
-## (i) via test statistics (comparing to critical values, consulting tables, etc.)
-## (ii) via p-values.
 
-## Let us quickly review a hypothesis testing procedure by testing whether some variables of our 
-## 'drug_data17' data set can be considered as following a Normal (bell-shaped) distribution.
+cdc_data17 %>% 
+  ggplot(aes(x = poverty_rate, y = unemployment_rate))
 
 
-## To do that, let us look at the density curves (distributions) of three variables: death_rate,
-## poverty_rate, and unemployment_rate.
 
+## You will see in the "Plots" pane an empty canvas. 
+## Now, we must decide what kind of plot we would like to produce.  
 
 
-## We can store plots made with 'ggplot2' into R objects.
+## Let's go with a scatter diagram:
 
 
-drug_data17 %>% ggplot(aes(death_rate)) + 
-  geom_histogram(color='black', fill='white', bins=20) + theme_bw()  ## a simple histogram
+cdc_data17 %>% 
+  ggplot(aes(x = poverty_rate, y = unemployment_rate)) +
+  geom_point()                                                 # Notice that, as soon as we start a plot, we keep adding  
+                                                               # layers to it using a "+" sign. The "geom_()" function
+                                                               # defines what kind of plot we want. Notice that for a scatter diagram,
+                                                               # we use "geom_point()".
 
 
+## We can also make univariate plots, such as histograms and box plots:
 
-hist_1 <- drug_data17 %>% ggplot(aes(death_rate)) + 
-  geom_histogram(aes(y=..density..), color='black', fill='white', bins=20) + 
-  geom_density(alpha=.2, fill="red") + theme_bw()                             ## now, adding density curves.
 
-hist_2 <- drug_data17 %>% ggplot(aes(poverty_rate)) + 
-  geom_histogram(aes(y=..density..), color='black', fill='white', bins=20) + 
-  geom_density(alpha=.2, fill="red") + theme_bw()
+cdc_data17 %>% 
+  ggplot(aes(x = population)) +
+  geom_histogram(color = "white")     ## notice that we can change some parameters within the parentheses.
 
-hist_3 <- drug_data17 %>% ggplot(aes(unemployment_rate)) + 
-  geom_histogram(aes(y=..density..), color='black', fill='white', bins=20) + 
-  geom_density(alpha=.2, fill="red") + theme_bw()
 
+cdc_data17 %>% 
+  ggplot(aes(x = poverty_rate)) +
+  geom_boxplot()
 
-## With the help of the 'patchwork' package, we can organize a nice plotting layout. Using a "|" symbol,
-## we can put different plots side by side. If you want a plot below another, simply use "/".
 
 
-hist_1 | hist_2 | hist_3       ## can we visually infer anything about their distributions?
+##--- Now, let us filter out a single state over time:
 
+cdc_ny <- cdc_data %>% 
+  filter(stname %in% "New York")   ## for string (text) variables, it is better to use the %in% operator.
 
 
 
-#== The Shapiro-Wilk test is a statistical test to check whether an array of data
-#== can be considered normally distributed. Its null hypothesis states that
-#== the data follow a normal distribution. Therefore, in case H0 is rejected, the data
-#== are NOT normally distributed.
+cdc_ny %>% 
+  ggplot(aes(y = poverty_rate, x = year)) +
+  geom_line()                                           ## "geom_line()" works great for plotting variables over time.
 
-## In statistical notation...
 
-## H0: The data are normally distributed
-## Ha: The data are not normally distributed
 
+## For more than one state...
 
+cdc_ny_ut <- cdc_data %>% 
+  filter(stname %in% c("New York", "Utah"))
+  
 
-drug_data17 %>% shapiro_test(death_rate)              ## Inference?
 
-drug_data17 %>% shapiro_test(poverty_rate)            ## Inference?
+cdc_ny_ut %>% 
+  ggplot(aes(y = unemployment_rate, x = year, color = stname)) +     ## the "color argument is convenient here
+  geom_line()
 
-drug_data17 %>% shapiro_test(unemployment_rate)       ## Inference?
 
 
+##--- Hypothesis testing:
 
-#================================================================================================#
 
+## We will dedicate an entire week for Hypothesis Testing, but let us run a quick test before we wrap up:
 
-##============= Practice:
 
+## The Shapiro-Wilk test (1965) is a common test to see whether a continuous variable follows a normal distribution.
+## Its null hypothesis (H0) is that the variable is normally distributed.
 
-## Play around and have fun with these data. Explore more plotting and wrangling options. Get yourself 
-## acquainted with R and the tidyverse. It will be important for our upcoming weeks!
+## More formally, 
+
+# H0: the variable follows a normal distribution; 
+# H1: the variable does not follow a normal distribution.
+
+
+cdc_ny %>% 
+  shapiro_test(poverty_rate)      ## What is your inference?
 
 
 
