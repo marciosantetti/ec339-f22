@@ -51,33 +51,7 @@ grey_dark <- "grey20"
 purple <- "#6A5ACD"
 ```
 
-
-class: middle, center, inverse
-
-.huge[.huge[.huge[.b[Hello!]]]]
-
-
-
----
-class: middle, center, inverse
-
-
-.huge[.b[Marcio Santetti, Ph.D. (*he/him*)]]
-
-<br>
-
-<img style="border-radius: 30%;" src="jm1_cropped.png" width="150px"/>
-
-
-
-[`r fontawesome::fa("envelope")` msantetti@skidmore.edu](mailto:msantetti@skidmore.edu)
-
----
-layout: false
-class: inverse, middle
-
-
-# Motivation
+# Prologue
 
 ---
 
@@ -356,7 +330,7 @@ data(engel)
 # Fitting a linear model
 
 
-```{r, echo=FALSE, dev='svg', fig.height=5.5}
+```{r, echo=FALSE, dev='svg', fig.height=6}
 engel %>% as_tibble() %>% 
   ggplot(aes(x = log(income), y = log(foodexp))) +
   geom_point(color = "#006661", alpha = 0.8, size = 2.3) +
@@ -373,7 +347,7 @@ engel %>% as_tibble() %>%
 # Fitting a linear model (cont.)
 
 
-```{r, echo=FALSE, dev='svg', fig.height = 5.5}
+```{r, echo=FALSE, dev='svg', fig.height = 6}
 engel %>% as_tibble() %>% 
   ggplot(aes(x = log(income), y = log(foodexp))) +
   geom_point(color = "#006661", alpha = 0.4, size = 2.3) +
