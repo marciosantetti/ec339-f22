@@ -18,7 +18,7 @@ class: inverse, middle
 ```{r Setup, include = F}
 options(htmltools.dir.version = FALSE)
 library(pacman)
-p_load(broom, latex2exp, ggplot2, ggthemes, ggforce, viridis, dplyr, magrittr, knitr, parallel, xaringanExtra, tidyverse, sjPlot, showtext, mathjaxr, ggforce, furrr, kableExtra, wooldridge, hrbrthemes, scales, ggeasy, patchwork)
+p_load(broom, latex2exp, ggplot2, ggthemes, ggforce, viridis, dplyr, magrittr, knitr, parallel, xaringanExtra, tidyverse, sjPlot, showtext, mathjaxr, ggforce, furrr, kableExtra, wooldridge, hrbrthemes, scales, ggeasy, patchwork, MetBrewer)
 
 
 
@@ -52,7 +52,7 @@ purple <- "#6A5ACD"
 ```
 
 
-# Prologue
+# Motivation
 
 ---
 
@@ -96,9 +96,9 @@ class: inverse, middle
 
 # Data are fuzzy
 
-Life expectancy _vs._ GDP per capita (1952--2007):<sup>*<sup>
+.small[Life expectancy _vs._ GDP per capita (1952&mdash;2007):<sup>*<sup>]
 
-```{r, echo=F, message=F, warning=F, dev = "svg", fig.height = 5}
+```{r, echo=F, message=F, warning=F, dev = "svg", fig.height = 5, warning = FALSE}
 
 library(gapminder)
 library(ggplot2)
@@ -107,12 +107,14 @@ library(tidyverse)
 
 data(gapminder)
 
-p <- ggplot(gapminder, aes(gdpPercap, lifeExp)) + scale_x_log10()
-p + geom_point(aes(color = continent), alpha=0.7, size = 2) +
-  labs(x="GDP per capita", y="Life Expectancy") +
+p <- ggplot(gapminder, aes(log(gdpPercap), lifeExp))
+p + geom_point(aes(color = continent), alpha=0.5, size = 1.3) +
+  MetBrewer::scale_color_met_d("Archambault") +
+  labs(x="GDP per capita (log)", y="Life Expectancy") +
   easy_y_axis_title_size(13) +
   easy_x_axis_title_size(13) +
-  easy_plot_legend_size(12)
+  easy_plot_legend_size(13) 
+  
 
 
 
@@ -128,16 +130,19 @@ p + geom_point(aes(color = continent), alpha=0.7, size = 2) +
 
 # Data are fuzzy
 
-Now, including .hi[regression lines]:
+.small[Now, including .hi[regression lines]:]
 
 ```{r, echo=F, message=F, warning=F, dev = "svg", fig.height = 5}
 
 
-p + geom_point(aes(color = continent), alpha=0.4, size = 2) + 
+
+p + geom_point(aes(color = continent), alpha=0.5, size = 1.3) +
+  MetBrewer::scale_color_met_d("Archambault") +
   geom_smooth(aes(color=continent), method="lm", se=FALSE) +
-  labs(x="GDP per capita", y="Life Expectancy") +
+  labs(x="GDP per capita (log)", y="Life Expectancy") +
+  easy_y_axis_title_size(13) +
   easy_x_axis_title_size(13) +
-  easy_plot_legend_size(12)
+  easy_plot_legend_size(13) 
 
 
 
@@ -148,17 +153,21 @@ p + geom_point(aes(color = continent), alpha=0.4, size = 2) +
 
 # Data are fuzzy
 
-Narrowing down to the Americas:
+.small[Narrowing down to the Americas:]
 
 ```{r, echo=F, message=F, warning=F, dev = "svg", fig.height = 5}
 
 
 gapminder %>% filter(continent == 'Americas') %>% 
-  ggplot(aes(x=gdpPercap, y=lifeExp)) + scale_x_log10() + geom_point(aes(color=country), alpha=0.4, size = 2) + 
-  geom_smooth(aes(color=country), method="lm", se=F) +
-  labs(x="GDP per capita", y="Life Expectancy") +
+  ggplot(aes(x=log(gdpPercap), y=lifeExp)) +
+  geom_point(aes(color = country), alpha=0.5, size = 1.3) +
+  #MetBrewer::scale_color_met_c("VanGogh1", n = 30) +
+  geom_smooth(aes(color=country), method="lm", se=FALSE) +
+  labs(x="GDP per capita (log)", y="Life Expectancy") +
+  easy_y_axis_title_size(13) +
   easy_x_axis_title_size(13) +
-  easy_plot_legend_size(12)
+  easy_plot_legend_size(13) 
+
 
 ```
 
@@ -479,7 +488,7 @@ $$
 layout: false
 class: inverse, middle
 
-# Next time: Simple regression in .mono[Stata]
+# Next time: Simple regression in practice
 
 
 ---
