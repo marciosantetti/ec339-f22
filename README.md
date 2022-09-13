@@ -29,7 +29,8 @@ Handout files created using [Quarto](https://quarto.org/).
  **Lecture 3: Simple Linear Regression**
  
   - Handout: [pdf](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/001-simple-regression/simple-regression.pdf)
-  - Slides: html | pdf
+  - Slides: [html](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/001-simple-regression/001-simple-regression.html) | [pdf](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/001-simple-regression/001-simple-regression.pdf)
+  - Data files: [`star5_small.csv`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/001-simple-regression/star5_small.csv) & [`data description`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/001-simple-regression/star5_small%20copy.txt) | [`food.csv`](https://raw.githubusercontent.com/marciosantetti/ec339-f22/main/lectures/001-simple-regression/food.csv)
   - Stata do-file: 
   - R script: 
 
