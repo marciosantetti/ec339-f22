@@ -23,7 +23,15 @@ Handout files created using [Quarto](https://quarto.org/).
 **Lecture 2: Stats/Stata refresher**
 
   - Data file: [cdc_data.csv](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/000-stats-refresher/cdc_data.csv)
+  - Stata do-file: [`000-stats-refresher.do`](https://github.com/marciosantetti/ec339-f22/blob/main/lectures/000-stats-refresher/000-stats-refresher.do) | To download, see `theSpring` module
+  - R script: [`000-stats-refresher.R`](https://github.com/marciosantetti/ec339-f22/blob/main/lectures/000-stats-refresher/000-stats-refresher.R)| To download, see `theSpring` module
+  
+ **Lecture 3: Simple Linear Regression**
+ 
+  - Handout: [pdf](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/001-simple-regression/simple-regression.pdf)
+  - Slides: html | pdf
   - Stata do-file: 
+  - R script: 
 
 
 ## Assignments
