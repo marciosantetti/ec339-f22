@@ -18,18 +18,19 @@ Handout files created using [Quarto](https://quarto.org/).
 
 **Lecture 1: What is Econometrics?**
 
-  - Slides: [html](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/000-stats-refresher/000-what-is-econometrics.html) | [pdf](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/000-stats-refresher/000-what-is-econometrics.pdf)
+  - Slides: [`html`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/000-stats-refresher/000-what-is-econometrics.html) | [`pdf`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/000-stats-refresher/000-what-is-econometrics.pdf)
 
 **Lecture 2: Stats/Stata refresher**
 
-  - Data file: [cdc_data.csv](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/000-stats-refresher/cdc_data.csv)
+  - Data file: [`cdc_data.csv`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/000-stats-refresher/cdc_data.csv)
   - Stata do-file: [`000-stats-refresher.do`](https://github.com/marciosantetti/ec339-f22/blob/main/lectures/000-stats-refresher/000-stats-refresher.do) | To download, see `theSpring` module
   - R script: [`000-stats-refresher.R`](https://github.com/marciosantetti/ec339-f22/blob/main/lectures/000-stats-refresher/000-stats-refresher.R)| To download, see `theSpring` module
   
  **Lecture 3: Simple Linear Regression**
  
-  - Handout: [pdf](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/001-simple-regression/simple-regression.pdf)
-  - Slides: html | pdf
+  - Handout: [`pdf`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/001-simple-regression/simple-regression.pdf)
+  - Slides: [`html`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/001-simple-regression/001-simple-regression.html) | [`pdf`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/001-simple-regression/001-simple-regression.pdf)
+  - Data files: [`star5_small.csv`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/001-simple-regression/star5_small.csv) & [`data description`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/001-simple-regression/star5_small%20copy.txt) | [`food.csv`](https://raw.githubusercontent.com/marciosantetti/ec339-f22/main/lectures/001-simple-regression/food.csv)
   - Stata do-file: 
   - R script: 
 
