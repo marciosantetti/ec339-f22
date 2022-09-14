@@ -46,7 +46,7 @@ my_theme <- theme_gray() +
 # Introduction
 
 
-Sometimes, a regression model with only one control variable is enough for our analysis. However, we can give at least **two** reasons for including more independent variables in our model: *first*, we were introduced in the last lecture to the *stochastic error term*, which includes all other variables and factors that are not explicitly consider on the regression's right-hand side. If an omitted variable is important to explain variations is the dependent variable, this brings many problems, which we will investigate later on. *Secondly*, in the social sciences, events change due to a myriad of other events, hardly so just from one single event. Take the *wage-education* relationship, for instance. Variables such as *gender*, *experience*, *race*, *tenure*, and many others, must at least be considered to be included in our models, in order to reduce the inherent amount of **error** that a regression analysis comprises.
+Sometimes, a regression model with only one control variable is enough for our analysis. However, we can give at least **two** reasons for including more independent variables in our model: *first*, we were introduced in the last lecture to the *stochastic error term*, which includes all other variables and factors that are not explicitly considered on the regression's right-hand side. If an omitted variable is important to explain variations is the dependent variable, this brings many problems, which we will investigate later on. *Secondly*, in the social sciences, events change due to a myriad of other events, hardly so just from one single event. Take the *wage-education* relationship, for instance. Variables such as *gender*, *experience*, *race*, *tenure*, and many others, must at least be considered to be included in our models, in order to reduce the inherent amount of **error** that a regression analysis comprises.
 
 :::column-margin
 **Recall** that whatever a regression model *does not* explicitly include will be part of the stochastic error term.
@@ -65,18 +65,18 @@ Notice that we are including two indexes (subscripts) next to each independent v
 
 If you are still struggling with this notation, consider your data set as a spreadsheet. Each **column** represents a variable, while each **row** brings individual information for the corresponding variable. Thus, columns are the $y$ and $x$ variables, and rows bring data on each $i$ individual contained in your data set. Using subscripts just compresses information, so we do not need to write down $n$ different regression equations. Notation is important and it is meant to simplify our lives, and thus I want to demystify many mathematical issues that you may have come across in your life that could have been made much simpler. Feel free to shoot me an email if any part of our mathematical notation is not clear.
 
-After we estimate $\hat{\beta}_1, \hat{\beta}_2, ..., \hat{\beta}_k$, how do we interpret these coefficients, now that the model is a little more complex than before? The answer is really simple: the same way! These coefficients still indicate the **change** in the dependent variable associated with a **1-unit increase** in the respective independent variable, *holding constant the other independent variables in the equation*. For example, if we want to interpret the $\hat{\beta}_2$ coefficient, it represents the change in $y$ associated with a 1-unit increase in $x_2$, holding $x_1, x_3, ..., x_k$ constant. This *ceteris paribus* (all else constant) assumption is a *partial equilibrium* interpretation, and you must have been introduced to this idea elsewhere. However, a very important *warning*: this *all else constant* assumption **does not** apply to any variables that might have been **omitted** from the model, therefore lying in the residual term $u_i$.
+After we estimate $\hat{\beta}_1, \hat{\beta}_2, ..., \hat{\beta}_k$, how do we interpret these coefficients, now that the model is a little more complex than before? The answer is really simple: in the same way! These coefficients still indicate the **change** in the dependent variable associated with a **1-unit increase** in the respective independent variable, *holding constant the other independent variables in the equation*. For example, if we want to interpret the $\hat{\beta}_2$ coefficient, it represents the change in $y$ associated with a 1-unit increase in $x_2$, holding $x_1, x_3, ..., x_k$ constant. This *ceteris paribus* (all else constant) assumption is a *partial equilibrium* interpretation, and you must have been introduced to this idea elsewhere. However, a very important *warning*: this *all else constant* assumption **does not** apply to any variables that might have been **omitted** from the model, therefore lying in the residual term $u_i$.
 
 The intercept coefficient, $\hat{\beta}_0$, still could be interpreted in the same say as in the simple regression case, but it is not very useful anymore. The role played by the intercept term in multiple regression analyses is more mathematical than statistical, and we usually do not even bother about its numerical value. However, it is still really important to include it in our models.
 
-Let's look at an example with $k=2$ independent variables:
+Let us look at an example with $k=2$ independent variables:
 
 $$ \widehat{CB}_i = 37.4 - 0.88P_i + 11.9Y_i  $$
 
 \noindent where $CB_i$ is beef consumption for individual $i$ (in pounds), $P_i$ is the price of beef (in dollars) paid by individual $i$, and $Y_i$ is the $i^{th}$ individual's disposable income (in thousands of dollars).
 
 
-The estimated value of $\hat{\beta}_1$ is -0.88. This means that, holding an individual's disposable income constant, a one-dollar increase in the price of beef *decreases* beef consumption by .88 pounds. Likewise, $\hat{\beta}_2$ is 11.9, meaning that, *ceteris paribus* (i.e., holding the price of beef constant), if an individual's disposable income icreases by one thousand dollars, her beef consumption will increase by 11.9 pounds. Notice that we have to respect the **measurement units** by which the variables are defined here, adapting the 1-unit change to the respective way in which they are measured.
+The estimated value of $\hat{\beta}_1$ is -0.88. This means that, holding an individual's disposable income constant, a one-dollar increase in the price of beef *decreases* beef consumption by .88 pounds, on average. Likewise, $\hat{\beta}_2$ is 11.9, meaning that, *ceteris paribus* (i.e., holding the price of beef constant), if an individual's disposable income increases by one thousand dollars, her beef consumption will increase, on average, by 11.9 pounds. Notice that we have to respect the **measurement units** by which the variables are defined here, adapting the 1-unit change to the respective way in which they are measured.
 
 In the above interpretation, however, other factors, such as the *price of chicken*, for instance, **cannot be held constant**, since it is included in the error term, in case you believe this variable is important to explain variations in beef consumption, and it is omitted from the model.^[ Recall from your Micro classes that the price of *substitutes*, in addition to other factors, is relevant to explain the demand for one good.]
 
@@ -117,7 +117,7 @@ p1 | p2
 
 # Total, Explained, and Residual Sum of Squares
 
-After our regression is estimated, we would like to assess *how well* our model fits the data. You may have been introduced introduced to the *coefficient of determination*, $R^2$, elsewhere, and it assesses the **variation** in $y$ caused by **variations** in our independent variable(s). And you have probably learned that it is calculated by squaring the correlation coefficient, usually known as $r$, thus ranging between 0 and 1, or 0 and 100\%.
+After our regression is estimated, we would like to assess *how well* our model fits the data. You may have been introduced to the *coefficient of determination*, $R^2$, elsewhere, and it assesses the **variation** in $y$ caused by **variations** in our independent variable(s). And you have probably learned that it is calculated by squaring the correlation coefficient, usually known as $r$, thus ranging between 0 and 1, or 0 and 100\%.
 
 We will now derive the $R^2$ from a *regression perspective*: the squared deviations of $y$ around its mean are a measure of the amount of variation to be explained by the regression model. These are called **Total Sum of Squares** (TSS):
 
@@ -199,12 +199,12 @@ $$ \bar{R}^2 =  1 - \dfrac{\sum_{i=1}^{n}\hat{u}_i^2/(n-k-1)}{\sum_{i=1}^{n}(y_i
 
 Notice that the formula is basically the same as the one for the "standard" $R^2$. The adjustment appears by adding denominators to the RSS ($n-k-1$) and the TSS ($n-1$). We are basically *normalizing* the RSS and TSS by their respective degrees-of-freedom. If you carefully look at the right-hand side of the formula above (ignoring the "1 -" part for now), you will notice that the denominator is nothing but the **variance** of $y$, the dependent variable. But what is the numerator? It is nothing but the **variance of the estimated error term**, $\hat{u}$. The denominator of its variance is $n-k-1$ because this is the number of degrees-of-freedom a regression requires to be estimated: from all $n$ observations, we estimate $k$ slope coefficients and 1 intercept. For $y$'s variance, our number of degrees-of-freedom is $n-1$ simply because we are just losing 1 observation to calculate its sample mean, $\bar{y}$, which is part of its variance formula.
 
-Thus, what the adjusted $R^2$ calculates is is the variance of our model's error term, *weighted* by our dependent variable's variance. Then, we subtract it from 1 and obtain the **variation (%) in the dependent variable, around its mean, that is explained by the estimated regression model, adjusted for degrees-of-freedom**. Notice how its interpretation is similar to the "standard" $R^2$, only adding the terms "around $y$'s mean" and "adjusted for degrees-of-freedom." **Do not** forget these terms, since these radically change your interpretation.
+Thus, what the adjusted $R^2$ calculates is the variance of our model's error term, *weighted* by (or *relative* to) our dependent variable's variance. Then, we subtract it from 1 and obtain the **variation (%) in the dependent variable, around its mean, that is explained by the estimated regression model, adjusted for degrees-of-freedom**. Notice how its interpretation is similar to the "standard" $R^2$, only adding the terms "around $y$'s mean" and "adjusted for degrees-of-freedom." **Do not** forget these terms, since these radically change your interpretation.
 
 
 # Assessing the quality of a regression equation
 
-Now that we were introduced to the two main goodness-of-fit measures, we are able to ask ourselves: how to assess the *validity* of a regression's estimates? Be aware that the statistical package you are using to estimate your models accepts *anything*: it does the "dirty job" of doing the math for you, but it does not bother about how good or how bad it is. Moreover, it does not *interpret* anything. This is *our* job.
+Now that we were introduced to the two main goodness-of-fit measures, we are able to ask ourselves: How to assess the *validity* of a regression's estimates? Be aware that the statistical package you are using to estimate your models accepts *anything*: it does the "dirty job" of doing the math for you, but it does not bother about how good or how bad it is. Moreover, it does not *interpret* anything. This is *our* job.
 
 As stated in our first week's lecture, where the main features of Econometrics were introduced, as well as the "classical" workflow for an applied work, the **key step** is to spend time thinking about what to expect **before** any estimation starts. This way, we are more prepared to get any results from our estimations.
 
@@ -223,7 +223,7 @@ Some aspects to ponder:
 6. Is the *functional form* appropriate to answer our questions?
 
 
-Step 1 must always be your **starting point**. Your study will never be relevant if solely based on *personal convictions/beliefs*. These must be backed up by theory, and we have a pretty good arsenal of theories in our discipline, don't we? This step is intimately connected with Step 5, since theory will inform you what variables are worth including in your model, without unnecessarily wasting DOF.
+Step 1 must always be your **starting point**. Your study will never be relevant if solely based on *personal conviction/beliefs*. These must be backed up by theory, and we have a pretty good arsenal of theories in our discipline, don't we? This step is intimately connected with Step 5, since theory will inform you what variables are worth including in your model, without unnecessarily wasting DOF.
 
 Step 2 is quickly assessed after the regression's estimation. Now that you are aware of the limitations of the "standard" $R^2$, always pay more attention to the **adjusted** $R^2$, playing around with different specifications of your model to evaluate how $\bar{R}^2$ reacts; usually, more *parsimonious* (that is, simpler) models do way better than models with too many regressors. Simplicity is always preferred, relative to complexity, in regression analysis.
 
@@ -311,13 +311,13 @@ dat <- tibble(
 
 p4 <- dat %>% 
   ggplot(aes(x = x, y = y)) +
-  geom_line(color = "#408480", alpha = 0.5, size = 0.8) +
+  geom_line(color = "#800080", alpha = 0.5, size = 0.8) +
   labs(title = "Case 1", x = 'Experience', y = 'Wages') +
   my_theme
 
 p5 <- dat %>% 
   ggplot(aes(x = x, y = lx)) +
-  geom_line(color = "#408480", alpha = 0.5, size = 0.8) +
+  geom_line(color = "#800080", alpha = 0.5, size = 0.8) +
   labs(title = "Case 2", x = 'Experience', y = 'Wages') +
   my_theme
 
@@ -325,7 +325,7 @@ p4 | p5
 
 ```
 
-In case you chose "Case 2," you live in the real world. In case we lived in the world of "Case 1," there would be no uncertainty: just stay on the job for the rest of your life, and your wage will increase no matter what. We know that this is basically impossible. 
+If you chose "Case 2," you live in the real world. In case we lived in the world of "Case 1," there would be no uncertainty: just stay on the job for the rest of your life, and your wage will increase no matter what. We know that this is basically impossible. 
 
 We will start playing around with different *functional forms* slowly. But be aware: we are able to model situations as in "Case 2" *without* compromising OLS properties. So far, we have only dealt with models where the dependent and independent variables are taken in *levels*, that is, without changing their functional definitions. For now, we will study **log-level**, **log-log**, and **level-log** models, and more functional forms are yet to come.
 
@@ -339,7 +339,7 @@ $$ \widehat{salary_i}  = 7.5 + .54 \ educ_i$$
 
 The slope coefficient for $educ_i$ is .54. This means that, for every additional year of education, one's salary will increase by 54 cents. It does not matter whether one is going from the $10^{th}$ to the $11^{th}$ year of education, or from the $17^{th}$ to the $18^{th}$. This increment of 54 cents is **constant**. The sign makes sense, but its interpretation does not correspond to one's theoretical expectations. 
 
-What we expect is that one's salary at least increases by a **constant percentage**, the more educated she becomes. Graphically, it looks somewhat like the graph below, relating two variables, $x$ and $y$.
+What we expect is that one's salary at least increases by a **constant percentage**, the more educated they become. Graphically, it looks somewhat like the graph below, relating two variables, $x$ and $y$.
 
 
 
@@ -354,7 +354,7 @@ What we expect is that one's salary at least increases by a **constant percentag
 
 p6 <- dat %>% 
   ggplot(aes(x = x, y = xsq)) +
-  geom_line(color = "#408480", alpha = 0.5, size = 0.8) +
+  geom_line(color = "#800080", alpha = 0.5, size = 0.8) +
   labs(x = 'x', y = 'y') +
   my_theme
 
@@ -376,7 +376,7 @@ Then we estimate it:
 $$ \widehat{log(salary_i)} = .584 + 0.083\ education_i $$
 
 
-Now, how do we interpret the slope coefficient on education? It's simple: just **multiply the coefficient by 100\%**! In other words, on average, for every additional year of education, salaries increase by $[100 \cdot 0.083 = ]$ 8.3\%, all else constant. Now, for every additional year of education an individual achieves, her salary will increase by a **constant percentage**, always on top of the previous salary. This may be not fully correspond to reality, but it performs way better than the level-level version of this model.
+Now, how do we interpret the slope coefficient on education? It's simple: just **multiply the coefficient by 100\%**! In other words, on average, for every additional year of education, salaries increase by $[100 \cdot 0.083 = ]$ 8.3\%, all else constant. Now, for every additional year of education an individual achieves, their salary will increase by a **constant percentage**, always on top of the previous salary. This may be not fully correspond to reality, but it performs way better than the level-level version of this model.
 
 Be **careful**, though: this does not mean that level-level models are useless. The functional form you will use depends on the research question you have at hand, as well as the interpretation that will work better for your problem/model.
 
@@ -393,11 +393,11 @@ Lastly, notice that when you get to interpret the coefficients in a log-level sp
 
 ### Log-log models
 
-Depending on our interpretation purposes, we can also log-transform the the independent variables of our model. If we decide to keep $y$ in *log*-form, then we have a **log-log** functional form. This setting is known as *constant elasticity models*. Let's look at an example:
+Depending on our interpretation purposes, we can also log-transform the independent variables of our model. If we decide to keep $y$ in *log*-form, then we have a **log-log** functional form. This setting is known as *constant elasticity models*. Let's look at an example:
 
 $$ log(salary_i) = \beta_0 + \beta_1log(sales_i) + u_i  $$
 
-Since both the dependent and independent variable are in *logs*, we can interpret $\hat{\beta}_1$ as the **elasticity of salary with respect to sales**. You must recall the concept of *elasticity* from your Microeconomics classes; if not, make sure to give it a quick review.
+Since both the dependent and independent variables are in *logs*, we can interpret $\hat{\beta}_1$ as the **elasticity of salary with respect to sales**. You must recall the concept of *elasticity* from your Microeconomics classes; if not, make sure to give it a quick review.
 
 Next, we interpret the estimated model:
 
