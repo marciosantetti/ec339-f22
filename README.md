@@ -35,6 +35,9 @@ Handout files created using [Quarto](https://quarto.org/).
   - R script: [`001-simple-regression.R`](https://github.com/marciosantetti/ec339-f22/blob/main/lectures/001-simple-regression/001-simple-regression.R) | To download, see `theSpring` module 
 
 
+**Lecture 4: Multiple Linear Regression**
+
+
 ## Assignments
 
 
