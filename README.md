@@ -31,8 +31,8 @@ Handout files created using [Quarto](https://quarto.org/).
   - Handout: [`pdf`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/001-simple-regression/simple-regression.pdf)
   - Slides: [`html`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/001-simple-regression/001-simple-regression.html) | [`pdf`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/001-simple-regression/001-simple-regression.pdf)
   - Data files: [`star5_small.csv`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/001-simple-regression/star5_small.csv) & [`data description`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/001-simple-regression/star5_small%20copy.txt) | [`food.csv`](https://raw.githubusercontent.com/marciosantetti/ec339-f22/main/lectures/001-simple-regression/food.csv)
-  - Stata do-file: 
-  - R script: 
+  - Stata do-file: [`001-simple-regression.do`](https://github.com/marciosantetti/ec339-f22/blob/main/lectures/001-simple-regression/001-simple-regression.do) | To download, see `theSpring` module
+  - R script: [`001-simple-regression.R`](https://github.com/marciosantetti/ec339-f22/blob/main/lectures/001-simple-regression/001-simple-regression.R) | To download, see `theSpring` module 
 
 
 ## Assignments
