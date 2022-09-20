@@ -1,5 +1,5 @@
 ---
-title: ".b[Simple Linear Regression]"
+title: ".b[Multiple Linear Regression]"
 subtitle: ".b[.green[EC 339]]"
 author: "Marcio Santetti"
 date: "Fall 2022"
@@ -18,7 +18,7 @@ class: inverse, middle
 ```{r Setup, include = F}
 options(htmltools.dir.version = FALSE)
 library(pacman)
-p_load(broom, latex2exp, ggplot2, ggthemes, ggforce, viridis, dplyr, magrittr, knitr, parallel, xaringanExtra, tidyverse, sjPlot, showtext, mathjaxr, ggforce, furrr, kableExtra, wooldridge, hrbrthemes, scales, ggeasy, patchwork, MetBrewer)
+p_load(broom, latex2exp, ggplot2, ggthemes, ggforce, viridis, dplyr, magrittr, knitr, parallel, xaringanExtra, tidyverse, sjPlot, mathjaxr, ggforce, furrr, kableExtra, wooldridge, hrbrthemes, scales, ggeasy, patchwork, MetBrewer, stargazer, gapminder)
 
 
 
@@ -56,442 +56,556 @@ purple <- "#6A5ACD"
 
 ---
 
-# On notation
-
-In our course, we will adopt the following .hi[notation] for a regression model:
+# Beyond simple regression
 
 <br>
 
+Simple regression models may not be .b[sufficient] to describe the relationships we are interested in.
+
+--
+
+<br>
+
+A few reasons:
+
+--
+
+  - Avoiding .b[bias] due to *omitted variables*;
+  
+  - More consistency with .b[economic theory];
+  
+  - Usually, relationships we study are a product of .b[several different events].
+
+---
+
+# Multiple regression models
+
+In .b[standard] notation:
+
+
+
 $$ 
 \begin{align}
-y_i = \beta_0 + \beta_1x_{1i} + u_i 
+y_i = \beta_0 + \beta_1x_{1i} +  \beta_2x_{2i} + \beta_3x_{3i} + ... + \beta_kx_{ki} + u_i \hspace{.7cm}\ \\ 
+\forall \ i = 1, 2, 3,..., n 
 \end{align}
 $$
 --
 
 <br>
 
-- where:
-
- - $y_i$: .hi[dependent variable]'s value for the $i^{th}$ individual;
- - $x_i$: .hi-orange[independent variable]'s value for the $i^{th}$ individual;
- - $\beta_0$: .hi[intercept] term;
- - $\beta_1$: .hi-orange[slope] coefficient;
- - $u_i$: .hi[residual/error] term (the $i^{th}$ individual's .hi-orange[random] deviation from the population parameters).
-
----
+- From last week...
 
 
-layout: false
-class: inverse, middle
+$$
+\begin{align}
+wage_i = \beta_0 + \beta_1educ_i + u_i
+\end{align}
+$$
 
-# Motivating regression models
+--
 
+- And now...
 
----
+$$
+\begin{align}
+wage_i = \beta_0 + \beta_1educ_i + \beta_2exper_i + \beta_3tenure_i + \beta_4gender_i + u_i
+\end{align}
+$$
 
-
-
-
-
-# Data are fuzzy
-
-.small[Life expectancy _vs._ GDP per capita (1952&mdash;2007):<sup>*<sup>]
-
-```{r, echo=F, message=F, warning=F, dev = "svg", fig.height = 5, warning = FALSE}
-
-library(gapminder)
-library(ggplot2)
-library(tidyverse)
-
-
-data(gapminder)
-
-p <- ggplot(gapminder, aes(log(gdpPercap), lifeExp))
-p + geom_point(aes(color = continent), alpha=0.5, size = 1.3) +
-  MetBrewer::scale_color_met_d("Archambault") +
-  labs(x="GDP per capita (log)", y="Life Expectancy") +
-  easy_y_axis_title_size(13) +
-  easy_x_axis_title_size(13) +
-  easy_plot_legend_size(13) 
-  
-
-
-
-```
-
-
-.pull-left[.footnote[
-[*]: Data from [`Gapminder`](https://www.gapminder.org).
-]]
-
----
-
-
-# Data are fuzzy
-
-.small[Now, including .hi[regression lines]:]
-
-```{r, echo=F, message=F, warning=F, dev = "svg", fig.height = 5}
-
-
-
-p + geom_point(aes(color = continent), alpha=0.5, size = 1.3) +
-  MetBrewer::scale_color_met_d("Archambault") +
-  geom_smooth(aes(color=continent), method="lm", se=FALSE) +
-  labs(x="GDP per capita (log)", y="Life Expectancy") +
-  easy_y_axis_title_size(13) +
-  easy_x_axis_title_size(13) +
-  easy_plot_legend_size(13) 
-
-
-
-```
-
-
----
-
-# Data are fuzzy
-
-.small[Narrowing down to the Americas:]
-
-```{r, echo=F, message=F, warning=F, dev = "svg", fig.height = 5}
-
-
-gapminder %>% filter(continent == 'Americas') %>% 
-  ggplot(aes(x=log(gdpPercap), y=lifeExp)) +
-  geom_point(aes(color = country), alpha=0.5, size = 1.3) +
-  #MetBrewer::scale_color_met_c("VanGogh1", n = 30) +
-  geom_smooth(aes(color=country), method="lm", se=FALSE) +
-  labs(x="GDP per capita (log)", y="Life Expectancy") +
-  easy_y_axis_title_size(13) +
-  easy_x_axis_title_size(13) +
-  easy_plot_legend_size(13) 
-
-
-```
-
-
----
-
-# Data are fuzzy
-
-Now, for the US...
-
-```{r, echo=F, message=F, warning=F, dev = "svg", fig.height = 5}
-
-
-gapminder %>% filter(country == 'United States') %>% 
-  ggplot(aes(x=gdpPercap, y=lifeExp)) + scale_x_log10() + geom_point(color="brown1", alpha=0.7, size = 2.3) + 
-  geom_smooth(method="lm", se=F, color="darkolivegreen4") +
-  labs(x="GDP per capita", y="Life Expectancy") +
-  easy_x_axis_title_size(13) +
-  easy_y_axis_title_size(13)
-
-
-```
-
-
----
-
-
-
-layout: false
-class: inverse, middle
-
-# Which method to use?
-
-
----
-
-# Ordinary Least Squares (OLS) 
+--
 
 <br>
 
-The .hi[Ordinary Least Squares (OLS) Estimator]:
-
-<br>
-
-  - OLS .hi-orange[minimizes] the .it[squared distance] between the data points and the regression line it generates.
-
-  - This way, we are .hi[minimizing] _error_ (_ignorance_) about our data and the relationship we are trying to better understand.
-
-  - In addition, it is .hi-orange[easy] to estimate and interpret.
+.small[.b[Important:] even if we are only interested in the effect of *educ* on *wage*, the model above is more consistent with theoretical priors.]
 
 
 ---
 
-# Ordinary Least Squares (OLS) 
-
-The .hi[Ordinary Least Squares (OLS) Estimator]:
+# An example
 
 
 .center[
+```{r, echo=FALSE, message=F}
+data("wage1")
+wage1 <- wage1 %>% 
+  as_tibble()
 
-$\text{SSR} = \sum_{i = 1}^{n} u_i^2\quad$ where $\quad u_i = y_i - \hat{y}_i$
 
+wage_reg1 <- lm(wage ~ educ, data=wage1)
+
+wage_reg1 %>% 
+  stargazer::stargazer(type = "text")
+
+```
 ]
 
+
+---
+
+# An example
+
+.smaller[.center[
+```{r, echo=FALSE, message=F}
+
+
+wage_reg2 <- lm(wage ~ educ + exper + tenure + female, data=wage1)
+
+wage_reg2 %>% 
+  stargazer::stargazer(type = "text", no.space = TRUE)
+
+```
+]]    
+---
+
+layout: false
+class: inverse, middle
+
+# Interpreting multiple coefficients
+
+
+---
+
+# The *ceteris paribus* assumption
+
+When .b[interpreting] multiple regression models, we .b[isolate] the effect of one independent variable on the
+dependent variable.
+
 --
+
+Therefore, the estimated .b[slope parameters] $(\hat{\beta}_1,...,\hat{\beta}_k)$ inform the change in $y$ resulting from a one-unit change in $x_i$, .it[holding all other independent variables constant].
+
+--
+
+.it[Mathematically] speaking...
 
 <br>
 
-- Why .hi-orange[squaring] these residuals? 
-
---
-
-- Bigger errors, bigger .hi[penalties].
-
---
-
-$$ 
+$$
 \begin{align}
-\min_{\hat{\beta}_0,\, \hat{\beta}_1} \text{SSR} \\
-\min_{\hat{\beta}_0,\, \hat{\beta}_1} (y_i - \hat{y}_i)^2 \\
-\min_{\hat{\beta}_0,\, \hat{\beta}_1} \left( y_i - \hat{\beta}_0 - \hat{\beta}_1 x_i \right)^2
+wage_i = \beta_0 + \beta_1educ_i + \beta_2exper_i + \beta_3tenure_i + \beta_4gender_i + u_i
 \end{align}
 $$
+
+$$
+\begin{align}
+\dfrac{\partial wage_i}{\partial educ_i} = \beta_1
+\end{align}
+$$
+$$
+\begin{align}
+\dfrac{\partial wage_i}{\partial exper_i} = \beta_2
+\end{align}
+$$
+
 ---
+layout: false
+class: inverse, middle
 
-# Ordinary Least Squares (OLS) 
+# Goodness-of-fit
 
-The .hi[Ordinary Least Squares (OLS) Estimator]:
+---
+# Goodness-of-fit
 
-<br>
-
-- .hi[Slope coefficient]:
-
-$$ \hat{\beta}_1 = \dfrac{\sum_i (x_i - \overline{x})(y_i - \overline{y})}{\sum_i (x_i - \overline{x})^2} = \dfrac{Cov(x,y)}{Var(x)} $$
-
+As more variables are added our model, *R*<sup>2</sup> increases in a .b[mechanical] fashion.
 
 --
 
-- .hi-orange[Intercept coefficient]:
+  - .b[Problem!]
+  
+<br>
+  
+--
 
-$$ \hat{\beta}_0 = \overline{y} - \hat{\beta}_1 \overline{x} $$
-
----
-
-# "Best" regression lines
-
-
-```{R, gen dataset, include = F, cache=F}
-# Set population and sample sizes
-n_p <- 100
-n_s <- 30
-# Set the seed
-set.seed(321)
-# Generate data
-pop_df <- tibble(
-  i = 3,
-  x = rnorm(n_p, mean = 10, sd = 1.2),
-  e = rnorm(n_p, mean = 0, sd = 1),
-  y = i + 0.6 * x + e,
-  row = rep(1:sqrt(n_p), times = sqrt(n_p)),
-  col = rep(1:sqrt(n_p), each = sqrt(n_p)),
-  s1 = sample(x = c(rep(T, n_s), rep(F, n_p - n_s))),
-  s2 = sample(x = c(rep(T, n_s), rep(F, n_p - n_s))),
-  s3 = sample(x = c(rep(T, n_s), rep(F, n_p - n_s)))
-)
-
-# Regressions
-lm0 <- lm(y ~ x, data = pop_df)
+```{r, echo = FALSE}
+wage_reg1 %>% 
+  glance() %>% 
+  select(r.squared) %>% 
+  kable(col.names = "Simple regression wage model", digits = 2)
 ```
 
+<br>
 
-```{R, ols vs lines 1, echo = F, dev = "svg", fig.height = 5}
-ggplot(data = pop_df, aes(x = x, y = y)) +
-geom_point(size = 3, color = "darkslategray", alpha = 0.8) +
-  easy_x_axis_title_size(13) +
-  easy_y_axis_title_size(13)
-```
-
-
-
----
-
-# "Best" regression lines
-
-For any line &mdash; $\hat{y} = \hat{\beta}_0 + \hat{\beta}_1 x$
-
-
-```{R, vs lines 2, echo = F, dev = "svg", fig.height = 5}
-# Define a function
-y_hat <- function(x, b0, b1) {b0 + b1 * x}
-# Define line's parameters
-b0 <- 6
-b1 <- 0.2
-# The plot
-ggplot(data = pop_df, aes(x = x, y = y)) +
-# geom_segment(aes(x = x, xend = x, y = y, yend = y_hat(x, b0, b1)), size = 0.5, alpha = 0.2) +
-geom_point(size = 3, color = "darkslategray", alpha = 0.9) +
-geom_abline(intercept = b0, slope = b1, color = "turquoise", size = 2, alpha = 0.9) +
-  easy_x_axis_title_size(13) +
-  easy_y_axis_title_size(13)
+```{r, echo = FALSE}
+wage_reg2 %>% 
+  glance() %>% 
+  select(r.squared) %>% 
+  kable(col.names = "Multiple regression wage model", digits = 2)
 ```
 
 ---
 
-# "Best" regression lines
+# Goodness-of-fit
 
-For any line &mdash; $\hat{y} = \hat{\beta}_0 + \hat{\beta}_1 x$ &mdash;, we can calculate residuals: $u_i = y_i - \hat{y}_i$
+<br><br>
 
-```{R, ols vs lines 3, echo = F, dev = "svg", fig.height = 5}
-# Define a function
-y_hat <- function(x, b0, b1) {b0 + b1 * x}
-# Define line's parameters
-b0 <- 6
-b1 <- 0.2
-# The plot
-ggplot(data = pop_df, aes(x = x, y = y)) +
-geom_segment(aes(x = x, xend = x, y = y, yend = y_hat(x, b0, b1)), size = 0.5, alpha = 0.2) +
-geom_point(size = 3, color = "darkslategray", alpha = 0.9) +
-geom_abline(intercept = b0, slope = b1, color = "turquoise", size = 2, alpha = 0.9) +
-  easy_x_axis_title_size(13) +
-  easy_y_axis_title_size(13)
-```
+- Let us add a `construc` indicator variable, including it into our previous model.
 
----
+<br>
 
-# "Best" regression lines
+  - `construc == 1` if working in the construction sector;
+  - `construc == 0` otherwise.
 
-For any line &mdash; $\hat{y} = \hat{\beta}_0 + \hat{\beta}_1 x$ &mdash;, we can calculate residuals: $u_i = y_i - \hat{y}_i$
+--
 
-```{R, ols vs lines 4, echo = F, dev = "svg", fig.height = 5}
-# Define a function
-y_hat <- function(x, b0, b1) {b0 + b1 * x}
-# Define line's parameters
-b0 <- 5
-b1 <- 0.5
-# The plot
-ggplot(data = pop_df, aes(x = x, y = y)) +
-geom_segment(aes(x = x, xend = x, y = y, yend = y_hat(x, b0, b1)), size = 0.5, alpha = 0.2) +
-geom_point(size = 3, color = "darkslategray", alpha = 0.9) +
-geom_abline(intercept = b0, slope = b1, color = "turquoise", size = 2, alpha = 0.9) +
-  easy_x_axis_title_size(13) +
-  easy_y_axis_title_size(13)
-```
+<br><br>
+
+$$
+\begin{align}
+wage_i = \beta_0 + \beta_1educ_i + \beta_2exper_i + \beta_3tenure_i + \beta_4gender_i + \beta_5construc_i + u_i
+\end{align}
+$$
 
 ---
 
-# "Best" regression lines
+# Goodness-of-fit
 
-For any line &mdash; $\hat{y} = \hat{\beta}_0 + \hat{\beta}_1 x$ &mdash;, we can calculate residuals: $u_i = y_i - \hat{y}_i$
+.smaller[.center[
+```{r, echo=FALSE}
+wage_reg3 <- lm(wage ~ educ + exper + tenure + female + construc, 
+                data=wage1) 
 
-```{R, ols vs lines 5, echo = F, dev = "svg", fig.height = 5}
-# Define a function
-y_hat <- function(x, b0, b1) {b0 + b1 * x}
-# Define line's parameters
-b0 <- 14
-b1 <- -0.4
-# The plot
-ggplot(data = pop_df, aes(x = x, y = y)) +
-geom_segment(aes(x = x, xend = x, y = y, yend = y_hat(x, b0, b1)), size = 0.5, alpha = 0.2) +
-geom_point(size = 3, color = "darkslategray", alpha = 0.9) +
-geom_abline(intercept = b0, slope = b1, color = "turquoise", size = 2, alpha = 0.9) +
-  easy_x_axis_title_size(13) +
-  easy_y_axis_title_size(13)
+
+wage_reg3 %>% 
+  stargazer(type="text", no.space = TRUE)
+
 ```
+]]
 
 
 ---
 
-# "Best" regression lines
+# Goodness-of-fit
 
+Before, the *R*<sup>2</sup> was .b[.364]! Why?
 
-SSR squares the errors $\left(\sum u_i^2\right)$: bigger errors get bigger penalties.
+--
 
-```{R, ols vs lines 6, echo = F, dev = "svg", fig.height = 5}
-# Define a function
-y_hat <- function(x, b0, b1) {b0 + b1 * x}
-# Define line's parameters
-b0 <- 14
-b1 <- -0.4
-# The plot
-ggplot(data = pop_df, aes(x = x, y = y)) +
-geom_segment(aes(x = x, xend = x, y = y, yend = y_hat(x, b0, b1), color = (y - y_hat(x, b0, b1))^2), size = 0.5, alpha = 0.8) +
-geom_point(size = 3, color = "darkslategray", alpha = 0.9) +
-geom_abline(intercept = b0, slope = b1, color = "turquoise", size = 2, alpha = 0.9) +
-scale_color_viridis(option = "cividis", direction = -1) +
-  easy_add_legend_title("Squared errors") 
-```
+Let us have a closer look at its .b[formula]:
+
+$$
+\begin{align}
+R^2 = 1 - \dfrac{RSS}{TSS} = 1- \dfrac{\sum_{i=1}^{n}\hat{u}_i^2}{\sum_{i=1}^{n}(y_i - \bar{y})^2}
+\end{align}
+$$
+
+--
+
+- The .b[denominator] will remain the same, but the .b[numerator] will, at most, remain the same.
+
+--
+
+- .b[Solution]: the .it[adjusted] *R*<sup>2</sup>, <SPAN STYLE="text-decoration:overline">*R*</SPAN><sup>2</sup>:
+
+$$
+\begin{align}
+\bar{R}^2 =  1 - \dfrac{\sum_{i=1}^{n}\hat{u}_i^2/(n-k-1)}{\sum_{i=1}^{n}(y_i - \bar{y})^2/(n-1)}
+\end{align}
+$$
+
+--
+
+- $k=$ # independent variables;
+- $(n-k-1) =$ # degrees-of-freedom.
 
 ---
 
-# "Best" regression lines
 
+# Goodness-of-fit
 
-The OLS estimate is the combination of $\hat{\beta}_0$ and $\hat{\beta}_1$ that minimize SSR.
+<br>
 
-```{R, ols vs lines 7, echo = F, dev = "svg", fig.height = 5}
-# Define a function
-y_hat <- function(x, b0, b1) {b0 + b1 * x}
-# Define line's parameters
-b0 <- lm0$coefficients[1]
-b1 <- lm0$coefficients[2]
-# The plot
-ggplot(data = pop_df, aes(x = x, y = y)) +
-geom_segment(aes(x = x, xend = x, y = y, yend = y_hat(x, b0, b1), color = (y - y_hat(x, b0, b1))^2), size = 0.5, alpha = 0.8) +
-geom_point(size = 3, color = "darkslategray", alpha = 0.9) +
-geom_abline(intercept = b0, slope = b1, color = red_pink, size = 2, alpha = 0.9) +
-scale_color_viridis(option = "cividis", direction = -1) +
-  easy_add_legend_title("Squared errors")
+Multiple regression model .b[without] *construc*:
+
+```{r, echo = FALSE}
+wage_reg2 %>% 
+  glance() %>% 
+  select(r.squared, adj.r.squared) %>% 
+  kable(col.names = c("R-squared", "Adjusted R-squared"), digits = 5)
 ```
 
+<br>
+
+Multiple regression model .b[with] *construc*:
+
+```{r, echo = FALSE}
+wage_reg3 %>% 
+  glance() %>% 
+  select(r.squared, adj.r.squared) %>% 
+  kable(col.names = c("R-squared", "Adjusted R-squared"), digits = 5)
+```
+
+--
+
+.right[What happened?]
 
 ---
 
 layout: false
 class: inverse, middle
 
-# Interpretation
+# Functional forms
+
 
 ---
 
+# Nonlinear relationships
+
+.smaller[Many times, the relationships we are interested in .b[do not] follow a linear pattern.]
 
 
-# Interpreting OLS coefficients
+```{R, include = F}
+reg_lin <- lm(lifeExp ~ gdpPercap, gapminder)
+a_lin <- reg_lin$coefficients[1]
+b_lin <- reg_lin$coefficients[2]
+r2_lin <- summary(reg_lin)$r.squared
+```
+
+
+
+
+```{R, echo = F, dev = "svg", fig.height = 5}
+gapminder %>% 
+  ggplot(aes(x = gdpPercap, y = lifeExp)) +
+  geom_point(alpha = 0.5) +
+  scale_x_continuous("GDP per capita ($)", label = scales::comma) +
+  geom_smooth(method = "lm", size = 1, color = "#7e7c7a", se = F) +
+  labs(y = "Life expectancy", title="GDP per capita vs. Life expectancy") +
+  easy_x_axis_title_size(13) +
+  easy_y_axis_title_size(13)
+```
+
+
+---
+
+# A level-level model
 
 <br>
 
-- .hi-orange[Slope] coefficient: the change (increase/decrease) in the dependent variable $(y)$ generated by a 1-unit increase in the independent variable $(x)$.
-
-
-- .hi[Intercept] term: the value of the dependent variable $(y)$ when $x=0$.
+```{r, echo = FALSE}
+reg_lin <- lm(lifeExp ~ gdpPercap, data = gapminder)
+reg_lin %>% tidy() %>% kable(digits = 6)
+```
 
 --
 
+<br>
+
+- .b[Interpretation:]
+
+- A 10,000-dollar increase in GDP per capita _.b[increases]_ life expectancy by 7.65 years.
+
+---
+
+# Nonlinear relationships
+
+```{R, include = F}
+reg_log_lin <- lm(log(lifeExp) ~ gdpPercap, data = gapminder)
+a_log_lin <- reg_log_lin$coefficients[1]
+b_log_lin <- reg_log_lin$coefficients[2]
+r2_log_lin <- summary(reg_log_lin)$r.squared
+```
+
+```{R, echo = F, dev = "svg", fig.height = 5.5}
+gapminder %>% 
+  ggplot(aes(x = gdpPercap, y = log(lifeExp))) +
+  geom_point(alpha = 0.5) +
+  scale_x_continuous("GDP per capita ($)", label = scales::comma) +
+  labs(y = "Life expectancy (log)", title="GDP per capita vs. Life expectancy") +
+  easy_x_axis_title_size(13) +
+  easy_y_axis_title_size(13)
+
+```
+
+---
+
+# A log-level model
 
 <br>
 
-.hi[Example]:
+```{r, echo = FALSE}
+reg_log_lin <- lm(log(lifeExp) ~ gdpPercap, data = gapminder)
+reg_log_lin %>% tidy() %>% kable()
+```
 
-- Interpret the following estimated regression models:
+--
 
+<br>
+
+- .b[Interpretation:]
+
+  - A one-unit increase in the explanatory variable increases the dependent variable by approximately $\beta_1 \times 100$ percent, on average.
+
+  - A 1,000-dollar increase in GDP per capita _.b[increases]_ life expectancy by 1.29%.
+
+
+---
+# Nonlinear relationships
+
+```{R, include = F}
+reg_log <- lm(log(lifeExp) ~ log(gdpPercap), gapminder)
+a_log <- reg_log$coefficients[1]
+b_log <- reg_log$coefficients[2]
+r2_log <- summary(reg_log)$r.squared
+```
+
+
+```{R, echo = F, dev = "svg", fig.height = 5.75}
+
+gapminder %>% 
+  ggplot(aes(x = log(gdpPercap), y = log(lifeExp))) +
+  geom_point(alpha = 0.5) +
+  scale_x_continuous("GDP per capita (log)", label = scales::comma) +
+  labs(y = "Life expectancy (log)", title="GDP per capita vs. Life expectancy") +
+  easy_x_axis_title_size(13) +
+  easy_y_axis_title_size(13)
+
+```
+
+
+---
+
+#  A log-log model
+
+<br>
+
+```{r, echo = FALSE}
+reg_log <- lm(log(lifeExp) ~ log(gdpPercap), data = gapminder)
+reg_log %>% tidy() %>% kable()
+```
+
+--
+
+<br>
+
+
+- .b[Interpretation:]
+
+  - A one-percent increase in the independent variable results in a $\beta_1$ percent change in the dependent variable, on average.
+
+  - A 1 % increase in GDP per capita _.b[increases]_ life expectancy by 0.147 %.
+
+---
+# Nonlinear relationships
+
+```{R, include = F}
+reg_lin_log <- lm(lifeExp ~ log(gdpPercap), gapminder)
+a_lin_log <- reg_lin_log$coefficients[1]
+b_lin_log <- reg_lin_log$coefficients[2]
+r2_lin_log <- summary(reg_lin_log)$r.squared
+```
+
+```{R, echo = F, dev = "svg", fig.height = 5.75}
+
+gapminder %>% 
+  ggplot(aes(x = log(gdpPercap), y = lifeExp)) +
+  geom_point(alpha = 0.5) +
+  scale_x_continuous("GDP per capita (log)", label = scales::comma) +
+  labs(y = "Life expectancy", title="GDP per capita vs. Life expectancy") +
+  easy_x_axis_title_size(13) +
+  easy_y_axis_title_size(13)
+
+```
+
+---
+
+# A level-log model
+
+<br>
+
+```{r, echo = FALSE}
+reg_lin_log <- lm(lifeExp ~ log(gdpPercap), data = gapminder)
+reg_lin_log %>% tidy() %>% kable()
+```
+
+--
+
+<br>
+
+
+- .b[Interpretation:]
+
+  - A one-percent change in the independent variable leads to a $\beta_1 \div 100$ change in the dependent variable, on average.
+
+  - A 1 % increase in GDP per capita _.b[increases]_ life expectancy by 0.0841 years.
+
+
+---
+
+# Quick summary
+
+<br>
+
+.center[**A nice interpretation reference**<sup>*</sup>].footnote[ by Kyle Raze]
+
+```{r, echo = F}
+cont_interp <- tibble(
+  model = c("Level-level <br> \\(y_i = \\beta_0 + \\beta_1 x_i + u_i\\)",
+             "Log-level <br> \\(\\log(y_i) = \\beta_0 + \\beta_1 x_i + u_i\\)",
+             "Log-log <br> \\(\\log(y_i) = \\beta_0 + \\beta_1 \\log(x_i) + u_i\\)",
+             "Level-log <br> \\(y_i = \\beta_0 + \\beta_1 \\log(x_i) + u_i\\)"),
+  interp = c("\\(\\Delta y = \\beta_1 \\cdot \\Delta x\\) <br> A one-unit increase in \\(x\\) leads to a <br> \\(\\beta_1\\)-unit increase in \\(y\\)",
+             "\\(\\%\\Delta y = 100 \\cdot \\beta_1 \\cdot \\Delta x\\) <br> A one-unit increase in \\(x\\) leads to a <br> \\(\\beta_1 \\cdot 100\\)-percent increase in \\(y\\)",
+             "\\(\\%\\Delta y = \\beta_1 \\cdot \\%\\Delta x\\) <br> A one-percent increase in \\(x\\) leads to a <br> \\(\\beta_1\\)-percent increase in \\(Y\\)",
+             "\\(\\Delta y = (\\beta_1 \\div 100) \\cdot \\%\\Delta x\\) <br> A one-percent increase in \\(x\\) leads to a <br> \\(\\beta_1 \\div 100\\)-unit increase in \\(y\\)")
+) %>% 
+  kable(
+  escape = F,
+  col.names = c("Model's functional form", " How to interpret \\(\\beta_1\\)?"),
+  align = c("l", "l")
+) %>% 
+  column_spec(1, color = "black", bold = T, italic = T, extra_css = "vertical-align:top;") %>% 
+  column_spec(2, color = "black", italic = T)
+cont_interp
+```
+
+---
+
+# The meaning of linear regression
+
+
+If we are able to use these nonlinear functional forms, what does *linear* regression mean after all?
+
+--
+
+  - As long as the model remains .b[linear in parameters],  it will be linear.
+
+  - This means that we cannot .b[mess around] with our $\beta$ coefficients!
+
+--
+
+<br>
+
+- **Examples**:
 
 $$
 \begin{align}
-\widehat{wage_i} = 10 + 2.65 \ educ_i
+log(wage_i) = \beta_0 + \beta_1educ_i + \beta_2exper_i + \beta_3tenure_i + \beta_4gender_i + u_i
+\end{align}
+$$
+--
+
+$$
+\begin{align}
+log(wage_i) = \beta_0 + log(\beta_1)educ_i + \beta_2exper_i + \beta_3^2tenure_i + \beta_4gender_i + u_i
 \end{align}
 $$
 
 --
 
-$$
-\begin{align}
-\widehat{sleep_i} = 6.5 -0.65 \ kids_i
-\end{align}
-$$
+<br>
+
+- Which one is .b[not] linear in parameters?
 
 ---
+
+
 
 layout: false
 class: inverse, middle
 
-# Next time: Simple regression in practice
+# Next time: Multiple Regression in practice
 
 
 ---
 exclude: true
-
-
