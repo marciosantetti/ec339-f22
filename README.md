@@ -38,6 +38,12 @@ Handout files created using [Quarto](https://quarto.org/).
 **Lecture 4: Multiple Linear Regression**
 
   - Handout: [`pdf`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/002-multiple-regression/multiple-regression.pdf)
+  - Slides: [`html`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/002-multiple-regression/002-multiple-regression.html) | [`pdf`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/002-multiple-regression/002-multiple-regression.pdf)
+  
+
+**Lecture 5: The Classical Linear Regression Model (CLRM)**
+
+  - Handout: [`pdf`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/003-clrm/classical-model.pdf)
   - Slides: `html` | `pdf`
 
 
