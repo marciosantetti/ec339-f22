@@ -39,6 +39,9 @@ Handout files created using [Quarto](https://quarto.org/).
 
   - Handout: [`pdf`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/002-multiple-regression/multiple-regression.pdf)
   - Slides: [`html`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/002-multiple-regression/002-multiple-regression.html) | [`pdf`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/002-multiple-regression/002-multiple-regression.pdf)
+  - Data files: [`mroz.csv`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/002-multiple-regression/mroz.csv) & [`data description`](https://raw.githubusercontent.com/marciosantetti/ec339-f22/main/lectures/002-multiple-regression/mroz.txt) | [`fast_food.csv`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/002-multiple-regression/fast_food.csv) & [`data description`](https://raw.githubusercontent.com/marciosantetti/ec339-f22/main/lectures/002-multiple-regression/fast_food.txt)
+  - Stata do-file: [`002-multiple-regression.do`](https://github.com/marciosantetti/ec339-f22/blob/main/lectures/002-multiple-regression/002-multiple-regression.do) | To download, see `theSpring` module 
+  - R script: [`002-multiple-regression.R`](https://github.com/marciosantetti/ec339-f22/blob/main/lectures/002-multiple-regression/002-multiple-regression.R) | To download, see `theSpring` module 
   
 
 **Lecture 5: The Classical Linear Regression Model (CLRM)**
