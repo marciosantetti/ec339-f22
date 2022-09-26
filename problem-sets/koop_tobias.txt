@@ -1,0 +1,40 @@
+koop_tobias_87.def
+
+id educ exper score motheduc fatheduc broken sibs wage
+
+Obs:  1057
+
+These data are a subset of those used in Koop, G.M. and Tobias, J. (2004) for the year 1987. 
+Koop, G.M. and Tobias, J. (2004), Learning about heterogeneity in returns to schooling. Journal of Applied Econometrics, 19 (7). pp. 827-849. ISSN 0883-7252. The data have been formatted by the authors of this book. Any errors are ours.
+
+
+variable  	label
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+id          	person id, white males age 14-22 in 1979
+educ       	education completed by 1993
+exper       	potential experience = age - education - 5
+score    	index based on 10 tests given in 1980
+motheduc   	mother's education
+fatheduc    	father's education
+broken      	= 1 if in a broken home at age 14, 0 otherwise
+sibs        	number of siblings
+wage       	wage (1993 dollars)
+
+
+ Variable    |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          id |      1057    1069.917    638.5473          2       2177
+        educ |      1057    12.69631    1.831313          9         20
+       exper |      1057    11.65279    2.455585          3         22
+       score |      1057    .0489309    .9027631      -3.96       1.89
+    motheduc |      1057    11.45695    2.852812          0         20
+-------------+--------------------------------------------------------
+    fatheduc |      1057    11.62535    3.704987          0         20
+      broken |      1057    .1362346    .3431999          0          1
+        sibs |      1057    3.229896    2.165749          0         16
+        wage |      1057    13.50562    7.486316       1.26      80.64
+
+
+
+
+  
