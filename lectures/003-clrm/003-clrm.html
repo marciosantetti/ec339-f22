@@ -109,11 +109,11 @@ term.*"
 
 --
 
-  - .b[Linear] means .b[linear in parameters] `\((\beta_i)\)`;
+  - .it[Linear] means linear in .b[parameters] `\((\beta_i)\)`;
   
-  - .b[Correctly specified] means that it has the correct .b[functional form] and .b[no omitted variables].
+  - .it[Correctly specified] means that it has the correct .b[functional form] and .b[no] omitted variables.
   
-  - And an .b[additive error term] implies .b[no other form] in which `\(u_i\)` appears in a model.
+  - And an .b[additive] error term implies .b[no] other form in which `\(u_i\)` appears in a model.
   
 --
 
@@ -141,7 +141,7 @@ $$
 
 # Assumption 1
 
-One of the main reasons for a .b[violation] of CLRM Assumption I is an .b[incorrectly specified model].
+One of the main reasons for a .it[violation] of CLRM Assumption I is an .b[incorrectly specified] model.
 
 --
 
@@ -149,7 +149,7 @@ One of the main reasons for a .b[violation] of CLRM Assumption I is an .b[incorr
 
   - Incorrect .b[functional form] (data visualization matters!);
 
-  - .b[Omitted variables] (leading to omitted variables bias).
+  - .b[Omitted] variables (leading to omitted variables bias).
   
 --
 
@@ -161,7 +161,7 @@ A regression's error term may sometimes be a .b[black box].
 
 --
 
-Recall that any potentially omitted variable(s) lie(s) there!
+  - Recall that any potentially omitted variable(s) lie(s) there!
 
 --
 
@@ -210,7 +210,7 @@ When considering our slope coefficients `\((\hat{\beta}_i)\)`, we expect that th
 
   - Values of the stochastic error term are defined by .b[pure chance].
   
-  - It follows a .b[probability distribution] centered around zero.
+  - It follows a probability .b[distribution] centered around zero.
   
   - Also known as the .b[exogeneity] assumption.
   
@@ -218,11 +218,11 @@ When considering our slope coefficients `\((\hat{\beta}_i)\)`, we expect that th
 
 &lt;br&gt;
 
-From standard .b[Microeconomic theory], recall:
+From standard Microeconomic theory, recall:
 
   - Factors that influence the .b[demand] for a given good:
   
-  - Price, price of substitutes, preferences...
+    - Price of the good itself, price of substitutes, preferences...
   
 ---
 
@@ -271,7 +271,7 @@ In practice, what is the difference between `\(\mathbb{E}[u \ | \ x] = 0\)` and 
   
   - Common in .b[time-series] data.
   
-  - Occurs when the model's disturbances are .b[correlated over time], i.e., `\(Cor(u_t, u_j) \neq 0\)` for `\(t \neq j\)`.
+  - Occurs when the model's disturbances are correlated .b[over time], i.e., `\(Cor(u_t, u_j) \neq 0\)` for `\(t \neq j\)`.
 
 
 
