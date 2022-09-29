@@ -47,7 +47,7 @@ Handout files created using [Quarto](https://quarto.org/).
 **Lecture 5: The Classical Linear Regression Model (CLRM)**
 
   - Handout: [`pdf`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/003-clrm/classical-model.pdf)
-  - Slides: `html` | `pdf`
+  - Slides: [`html`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/003-clrm/003-clrm.html) | [`pdf`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/003-clrm/003-clrm.pdf)
 
 
 ## Assignments
@@ -55,6 +55,8 @@ Handout files created using [Quarto](https://quarto.org/).
 
 ### Problem Sets
 
+  - [`Problem Set 1`](https://raw.githack.com/marciosantetti/ec339-f22/main/problem-sets/ps1/ps1-f22.pdf) (due 10/12, before class)
+    - Data set, data description, and submission instructions on `theSpring` assignment page.
 
 
 ### Quizzes
