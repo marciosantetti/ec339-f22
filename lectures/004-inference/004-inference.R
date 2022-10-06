@@ -4,7 +4,7 @@
 #== Prof. Santetti 
 
 #=============================================================================#
-#        THE CLASSICAL LINEAR REGRESSIO MODEL LINEAR REGRESSION IN R          #
+#                         REGRESSION INFERENCE IN R                           #
 #=============================================================================#
 
 
