@@ -59,7 +59,7 @@ Handout files created using [Quarto](https://quarto.org/).
   - Stata do-file: [`004-inference.do`](https://github.com/marciosantetti/ec339-f22/blob/main/lectures/004-inference/004-inference.do) | To download, see `theSpring` module 
   - R script:  [`004-inference.R`](https://github.com/marciosantetti/ec339-f22/blob/main/lectures/004-inference/004-inference.R) | To download, see `theSpring` module 
   
- **Lecture 7: More on functional forms*
+ **Lecture 7: More on functional forms**
  
   - Handout: [`pdf`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/005-functional-forms/more-functional-forms.pdf)
   - Slides: `html` | `pdf`
