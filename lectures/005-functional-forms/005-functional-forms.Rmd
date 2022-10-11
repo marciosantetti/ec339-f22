@@ -432,7 +432,7 @@ qchicken_i = \beta_0 + \beta_1\dfrac{1}{pchicken_{i}} +  u_i
 $$
 
 ```{r, echo = F, dev = "svg", fig.height = 5}
-chick <- read_csv('newbroiler.csv')
+chick <- read_csv('chicken_demand.csv')
 
 chick %>% ggplot(aes(x=p, y=q)) + geom_point(alpha=1/2) + 
   labs(x='Price of chicken (per pound)', y='Per capita chicken consumption', title = 'Chicken consumption vs. price of chicken') + 
@@ -748,8 +748,8 @@ with $D$ being a *dummy* variable.
 
 Interpretation of $\beta_1$:
 
-- When $D=1$, $y$ will increase by $100 \times \left( e^{\beta_1 - 1} \right)$ percent.
-- When $D=0$, $y$ will decrease by $100 \times \left( e^{-\beta_1 - 1} \right)$ percent.
+- When $D=1$, $y$ will increase by $100 \times \left( e^{\beta_1}-1 \right)$ percent.
+- When $D=0$, $y$ will decrease by $100 \times \left( e^{-\beta_1}-1 \right)$ percent.
 
 ---
 # Log-Level Example
