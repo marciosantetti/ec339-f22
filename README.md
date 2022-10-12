@@ -72,6 +72,9 @@ Handout files created using [Quarto](https://quarto.org/).
 
   - [`Problem Set 1`](https://raw.githack.com/marciosantetti/ec339-f22/main/problem-sets/ps1/ps1-f22.pdf) (due 10/12, before class)
     - Data set, data description, and submission instructions on `theSpring` assignment page.
+    
+  - [`Problem Set 2`](https://raw.githack.com/marciosantetti/ec339-f22/main/problem-sets/ps2/ps2-f22.pdf) (due 10/26, before class)
+    - Data sets, data description files, and submission instructions on `theSpring` assignment page.
 
 
 ### Quizzes
