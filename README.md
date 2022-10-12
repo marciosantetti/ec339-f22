@@ -82,3 +82,11 @@ Handout files created using [Quarto](https://quarto.org/).
 All quizzes will be posted on `theSpring`.
 
 
+### Applied Research Project
+
+  - [`Template (pdf)`](https://raw.githack.com/marciosantetti/ec339-f22/main/research-proj/research-proj-template.pdf)
+  - [`Handout (pdf)`](https://raw.githack.com/marciosantetti/ec339-f22/main/research-proj/research-proj-handout.pdf)
+  
+ Projects from previous semesters will be posted on `theSpring`.
+
+
