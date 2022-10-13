@@ -63,6 +63,12 @@ Handout files created using [Quarto](https://quarto.org/).
  
   - Handout: [`pdf`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/005-functional-forms/more-functional-forms.pdf)
   - Slides: [`html`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/005-functional-forms/005-functional-forms.html) | [`pdf`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/005-functional-forms/005-functional-forms.pdf)
+  - Stata do-file: [`005-functional-forms.do`](https://github.com/marciosantetti/ec339-f22/blob/main/lectures/005-functional-forms/005-functional-forms.do) | To download, see `theSpring` module
+  - R script: [`005-functional-forms.R`](https://github.com/marciosantetti/ec339-f22/blob/main/lectures/005-functional-forms/005-functional-forms.R) | To download, see `theSpring` module
+  
+ **Lecture 8: Violations of Classical Assumptions I: Omitted Variables Bias**
+ 
+  - Handout: [`pdf`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/006-ovb/006-ovb.pdf)
 
 
 ## Assignments
