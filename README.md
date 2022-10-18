@@ -90,6 +90,8 @@ All quizzes will be posted on `theSpring`.
 
 ### Applied Research Project
 
+ Students must submit their Applied Research Projects until the **Final Exam day**. 
+
   - [`Template (pdf)`](https://raw.githack.com/marciosantetti/ec339-f22/main/research-proj/research-proj-template.pdf)
   - [`Handout (pdf)`](https://raw.githack.com/marciosantetti/ec339-f22/main/research-proj/research-proj-handout.pdf)
   
