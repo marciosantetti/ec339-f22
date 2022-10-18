@@ -68,8 +68,8 @@ Handout files created using [Quarto](https://quarto.org/).
   
  **Lecture 8: Violations of Classical Assumptions I: Omitted Variables Bias**
  
-  - Handout: [`pdf`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/006-ovb/006-ovb.pdf)
-  - Slides: [`html`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/006-ovb/006-ovb.html) | [`pdf`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/006-ovb/006-ovb.pdf)
+  - Handout: [`pdf`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/006-ovb/ovb.pdf)
+  - Slides: [`html`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/006-ovb/006-ovb.html) | [`pdf`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/006-ovb/006-ovb2.pdf)
 
 ## Assignments
 
