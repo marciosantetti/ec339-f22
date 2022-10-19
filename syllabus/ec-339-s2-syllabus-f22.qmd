@@ -94,9 +94,9 @@ This course has one required textbook. Other optional references are listed belo
 
 - **Assignments** (20\%): Every week, students are required to complete a *quiz* (True/False, multiple-choice questions), comprehending each weekly content. **Each weekly quiz is due the beginning of Wednesday lectures** (12:20 PM). Students will also be required to complete 5 *Problem Sets*, that will comprehend, in general, 2-3 weeks of content. Students will be asked to answer theoretical and applied problems,  strongly based off of lecture notes and, of course, lectures themselves. 
 
-- **Exams**: This course will have a *Midterm* (20\%, date TBD) and a *Final* (comprehensive, 30\%) exam. Each exam will follow a similar structure as the Problem Sets'. 
+- **Exams**: This course will have a *Midterm* (20\%, 11/04) and a *Final* (comprehensive, 30\%) exam. Each exam will follow a similar structure as the Problem Sets'. 
 
-- **Research Project** (30\%): The idea of the applied project is to provide a *hands-on* experience for students, in which they are responsible for formulating a research question, looking for the data (cross-section, panel, or time-series), and performing the appropriate econometric treatments and techniques, so, by the end of it, that question can be answered. The project must be between 8 and 10 pages, double-spaced, with the required econometric outputs and bibliography (these last two do not count for the paper's length). All necessary assistance will be provided by the instructor upon students' request. Moreover, students will have access to a template, as well as several projects shared by students from previous semesters, serving as useful references. Feel free to work either in pairs or individually.
+- **Research Project** (30\%): The idea of the applied project is to provide a *hands-on* experience for students, in which they are responsible for formulating a research question, looking for the data (cross-section, panel, or time-series), and performing the appropriate econometric treatments and techniques, so, by the end of it, that question can be answered. The project must be between 8 and 10 pages, double-spaced, with the required econometric outputs and bibliography (these last two do not count for the paper's length). All necessary assistance will be provided by the instructor upon students' request. Moreover, students will have access to a template, as well as several projects shared by students from previous semesters, serving as useful references. Feel free to work either in pairs or individually. You must submit your project until the Final Exam day.
 
 - **Attendance and participation**: Your grade will fall one letter grade if you miss more than five lectures. By missing any additional classes, you will lose a partial letter grade. Coming to class late will count as half of an absence.
 
@@ -124,10 +124,11 @@ Unsatisfactory performance                      F (0--60\%)
 * **Sep 12**: "Add" deadline
 * **Oct 10**: Study Day
 * **Oct 14--16**: Celebration Weekend
+* **Nov 4**: Midterm Exam (in class)
 * **Nov 10**: Course withdrawal deadline
 * **Nov 23--27**: Thanksgiving break
 * **Dec 9**: Last day of classes
-* ***Dec 14, 1:30 PM --- 4:30 PM***: Final Exam, at our classroom.
+* ***Dec 14, 1:30 PM --- 4:30 PM***: Final Exam, at our classroom; Applied Research Project due date.
 
 
 # Class Policies
