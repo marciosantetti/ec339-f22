@@ -70,6 +70,13 @@ Handout files created using [Quarto](https://quarto.org/).
  
   - Handout: [`pdf`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/006-ovb/ovb.pdf)
   - Slides: [`html`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/006-ovb/006-ovb.html) | [`pdf`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/006-ovb/006-ovb2.pdf)
+  - Stata do-file: [`006-ovb.do`](https://github.com/marciosantetti/ec339-f22/blob/main/lectures/006-ovb/006-ovb.do) | To download, see `theSpring` module
+  - R script: [`006-ovb.R`](https://github.com/marciosantetti/ec339-f22/blob/main/lectures/006-ovb/006-ovb.R) | To download, see `theSpring` module 
+  
+  
+**Lecture 9: Violations of Classical Assumptions II: Multicollinearity**
+
+  - Handout: [`pdf`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/007-multicollinearity/multicollinearity.pdf)
 
 ## Assignments
 
