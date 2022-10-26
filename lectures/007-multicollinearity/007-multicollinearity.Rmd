@@ -440,7 +440,7 @@ where $R_i^2$ is the coefficient of determination of the *auxiliary regression* 
 
 --
 
-  - The procedure is to estimate one auxiliary regression model for .*each* independent variable.
+  - The procedure is to estimate one auxiliary regression model for *each* independent variable.
   - Then, store the $R^2$ for each regression.
   - A *VIF* greater than 5 is already sifficient to imply high multicollinearity.
   
