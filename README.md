@@ -80,6 +80,11 @@ Handout files created using [Quarto](https://quarto.org/).
   - Slides: [`html`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/007-multicollinearity/007-multicollinearity.html) | [`pdf`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/007-multicollinearity/007-multicollinearity.pdf)
   - Stata do-file: [`007-multicollinearity.do`](https://github.com/marciosantetti/ec339-f22/blob/main/lectures/007-multicollinearity/007-multicollinearity.do) | To download, see `theSpring` module
   - R script: [`007-multicollinearity.R`](https://github.com/marciosantetti/ec339-f22/blob/main/lectures/007-multicollinearity/007-multicollinearity.R) | To download, see `theSpring` module
+  
+  
+**Lecture 10: Violations of Classical Assumptions III: Serial correlation**
+
+  - Handout: [`pdf`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/008-serial-correlation/serial-correlation.pdf)
 
 ## Assignments
 
