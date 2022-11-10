@@ -85,6 +85,8 @@ Handout files created using [Quarto](https://quarto.org/).
 **Lecture 10: Violations of Classical Assumptions III: Serial correlation**
 
   - Handout: [`pdf`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/008-serial-correlation/serial-correlation.pdf)
+  - Slides: [`html`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/008-serial-correlation/008-serial-correlation.html) | [`pdf`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/008-serial-correlation/008-serial-correlation.pdf)
+  
 
 ## Assignments
 
@@ -95,6 +97,9 @@ Handout files created using [Quarto](https://quarto.org/).
     - Data set, data description, and submission instructions on `theSpring` assignment page.
     
   - [`Problem Set 2`](https://raw.githack.com/marciosantetti/ec339-f22/main/problem-sets/ps2/ps2-f22.pdf) (due 10/26, before class)
+    - Data sets, data description files, and submission instructions on `theSpring` assignment page.
+    
+  - [`Problem Set 3`](https://raw.githack.com/marciosantetti/ec339-f22/main/problem-sets/ps3/ps3-f22.pdf) (due 11/22, midnight)
     - Data sets, data description files, and submission instructions on `theSpring` assignment page.
 
 
