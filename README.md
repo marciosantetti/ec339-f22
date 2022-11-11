@@ -86,6 +86,12 @@ Handout files created using [Quarto](https://quarto.org/).
 
   - Handout: [`pdf`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/008-serial-correlation/serial-correlation.pdf)
   - Slides: [`html`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/008-serial-correlation/008-serial-correlation.html) | [`pdf`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/008-serial-correlation/008-serial-correlation.pdf)
+  - Stata do-file: [`008-serial-correlation.do`]() | To download, see `theSpring` module
+  - R script: [`008-serial-correlation.R`]() | To download, see `theSpring` module
+  
+**Lecture 11: Violations of Classical Assumptions IV: Heteroskedasticity**
+
+  - Handout: [`pdf`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/009-heteroskedasticity/heteroskedasticity.pdf)
   
 
 ## Assignments
