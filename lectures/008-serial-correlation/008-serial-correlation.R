@@ -242,7 +242,7 @@ co_okun_model %>%
 ##---------------------------------------------------------------------
 
 
-##--- A second example: : interest rates vs. profit rates in the US (1955-2016)
+##--- A second example: interest rates vs. profit rates in the US (1955-2016)
 
 
 ##=== Data prep:

@@ -292,3 +292,73 @@ prais du g, corc
 ** We can check out Stata's documentation on the function:
 
 help prais
+
+
+
+
+*---------------------------------------------------------
+
+
+**--- A second example: interest rates vs. profit rates in the US (1955-2016)
+
+
+
+
+** Data prep:
+
+
+clear
+
+use macro_data
+
+
+** We are dealing with annual data, so we can use the "year" column as our time variables
+
+tsset year
+
+
+
+
+
+*--
+
+** creating time series for the real interest
+** rate and the profit rate:
+
+gen real_int_rate = ifedfunds - infrate
+
+gen profit_rate = (cp / k) * 100
+
+
+
+** Visually:
+
+twoway (tsline real_int_rate)
+
+twoway (tsline profit_rate)
+
+
+**--- Regression model:
+
+
+reg real_int_rate profit_rate
+
+
+
+
+**--- Testing for serial correlation:
+
+
+estat dwatson
+
+
+estat bgodfrey, lag(1) nomiss0
+
+
+
+
+**--- Correcting for serial correlation:
+
+
+
+prais real_int_rate profit_rate, corc
