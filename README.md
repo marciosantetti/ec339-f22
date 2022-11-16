@@ -92,7 +92,9 @@ Handout files created using [Quarto](https://quarto.org/).
 **Lecture 11: Violations of Classical Assumptions IV: Heteroskedasticity**
 
   - Handout: [`pdf`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/009-heteroskedasticity/heteroskedasticity.pdf)
-  
+  - Slides: [`html`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/009-heteroskedasticity/009-heteroskedasticity.html) | [`pdf`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/009-heteroskedasticity/009-heteroskedasticity.pdf)
+  - Stata do-file: `009-heteroskedasticity.do` | To download, see `theSpring` module
+  - R script: `009-heteroskedasticity.R` | To download, see `theSpring` module
 
 ## Assignments
 
