@@ -1,7 +1,7 @@
 set more off
 
 *use the wage1 data file*
-use "N:\ECON7800\wage1.dta"
+use wage1
 
 *generate a binary indicator of highwage that takes a value 1 if wage >6 and zero otherwise. Note 6 is the approximate average wage in the sample*
 gen highwage = 0
@@ -29,6 +29,12 @@ logit highwage educ exper tenure female nonwhite
 eststo logitmfx: mfx compute 
 *for various goodness of fit measures*
 fitstat
+
+
+margins, dydx(*)
+
+
+logit highwage
 
 *compare LPM, Probit, Logit* FITSTATS ARE JUST GOOD FOR COMPARING MODELS WITH THE SAME APPROACH, LIKE DIFFERENT LOGIT MODELS, PROBIT, ETC.
 estout ols probitmfx logitmfx, cells(b(star fmt(3)) p(par fmt(3))) stats(N) legend margin 
