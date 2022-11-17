@@ -95,6 +95,11 @@ Handout files created using [Quarto](https://quarto.org/).
   - Slides: [`html`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/009-heteroskedasticity/009-heteroskedasticity.html) | [`pdf`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/009-heteroskedasticity/009-heteroskedasticity.pdf)
   - Stata do-file: [`009-heteroskedasticity.do`](https://github.com/marciosantetti/ec339-f22/blob/main/lectures/009-heteroskedasticity/009-heteroskedasticity.do) | To download, see `theSpring` module
   - R script: [`009-heteroskedasticity.R`](https://github.com/marciosantetti/ec339-f22/blob/main/lectures/009-heteroskedasticity/heteroskedasticity.R) | To download, see `theSpring` module
+  
+
+**Lecture 12: Binary Dependent Variable Models**
+
+  - Handout: [`pdf`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/010-binary-models/binary-models.pdf)
 
 ## Assignments
 
