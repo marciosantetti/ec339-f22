@@ -92,7 +92,7 @@ ipums_model %>%
 
 
 ipums_model %>% 
-  white_lm(interactions = TRUE)
+  white(interactions = TRUE)
 
 
 ##---------------------------------------------------------
