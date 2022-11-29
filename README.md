@@ -100,6 +100,7 @@ Handout files created using [Quarto](https://quarto.org/).
 **Lecture 12: Binary Dependent Variable Models**
 
   - Handout: [`pdf`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/010-binary-models/binary-models.pdf)
+  - Slides: [`html`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/010-binary-models/010-binary-models.html) | [`pdf`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/010-binary-models/010-binary-models.pdf)
 
 ## Assignments
 
