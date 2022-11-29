@@ -117,7 +117,7 @@ Handout files created using [Quarto](https://quarto.org/).
     - Data sets, data description files, and submission instructions on `theSpring` assignment page.
     
   - [`Problem Set 4`](https://raw.githack.com/marciosantetti/ec339-f22/main/problem-sets/ps4/ps4-f22.pdf) (due 12/09, midnight)
-    - - Data sets and data description files on `theSpring`.
+    - Data sets and data description files on `theSpring`.
 
 
 ### Quizzes
