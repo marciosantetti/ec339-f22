@@ -101,6 +101,8 @@ Handout files created using [Quarto](https://quarto.org/).
 
   - Handout: [`pdf`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/010-binary-models/binary-models.pdf)
   - Slides: [`html`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/010-binary-models/010-binary-models.html) | [`pdf`](https://raw.githack.com/marciosantetti/ec339-f22/main/lectures/010-binary-models/010-binary-models.pdf)
+  - Stata do-file: [`010-binary-models.do`](https://github.com/marciosantetti/ec339-f22/blob/main/lectures/010-binary-models/010-binary-models.do) | To download, see `theSpring` module
+  - R script: [`010-binary-models.R`](https://github.com/marciosantetti/ec339-f22/blob/main/lectures/010-binary-models/010-binary-models.R) | To download, see `theSpring` module
 
 ## Assignments
 
